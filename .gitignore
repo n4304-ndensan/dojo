@@ -43,6 +43,7 @@ venv/
 *.dump
 *.log
 *.out
+*.exe
 *.tmp
 *.pcap
 *.pcapng
