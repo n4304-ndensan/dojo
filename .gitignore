@@ -2,8 +2,8 @@
 # Rust / Cargo
 # ========================================
 # Build artifacts
-/target/
-/debug/
+**/target/**
+**/debug/**
 
 # Cargo.lock (for libraries — keep if making a binary crate)
 #Cargo.lock
