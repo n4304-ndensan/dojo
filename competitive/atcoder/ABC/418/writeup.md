@@ -36,9 +36,7 @@ $$
 ### 式の分解
 
 $$
-\sum_{i=1}^{n} \min(b-1, A_i)
-= \underbrace{\sum_{\substack{1 \leq i \leq n \\ A_i < b}} A_i}_{\text{小さい方の総和}}
-+ \underbrace{(n - \text{cnt}[b-1]) \cdot (b-1)}_{\text{大きい方の寄与}}
+\sum_{i=1}^{n} \min(b-1, A_i) = \underbrace{\sum_{\substack{1 \le i \le n \\ A_i < b}} A_i}_{\text{小さい方の総和}} + \underbrace{(n - \mathrm{cnt}[b-1])\,(b-1)}_{\\text{大きい方の寄与}}
 $$
 
 ここで
