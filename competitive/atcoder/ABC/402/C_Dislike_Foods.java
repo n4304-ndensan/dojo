@@ -3,41 +3,43 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num_food = sc.nextInt();
-        int num_Menu = sc.nextInt();
 
-        List<List<Integer>> menus = new ArrayList<>();
-        for (int i = 0; i < num_Menu; i++ ) {
-            int num_menu_food = sc.nextInt();
-            List<Integer> tmp_menus = new ArrayList<>();
-            for (int j = 0; j < num_menu_food; j++) {
-                tmp_menus.add(sc.nextInt());
-            }
-            menus.add(tmp_menus);
+        int numFood = sc.nextInt();
+        int numMenu = sc.nextInt();
+
+        // 食材ごとに含まれるメニューIDのリスト
+        List<List<Integer>> foodToMenus = new ArrayList<>(numFood);
+        for (int i = 0; i < numFood; i++) {
+            foodToMenus.add(new ArrayList<>());
         }
 
+        // 各メニューに残っている必要食材数
+        int[] remaining = new int[numMenu];
 
-        int eatable_menus = 0;
+        for (int menuId = 0; menuId < numMenu; menuId++) {
+            int numMenuFood = sc.nextInt();
+            remaining[menuId] = numMenuFood;
 
+            for (int j = 0; j < numMenuFood; j++) {
+                int foodIndex = sc.nextInt() - 1; // 0-based
+                foodToMenus.get(foodIndex).add(menuId);
+            }
+        }
 
-        for (int i = 0; i < num_food; i++) {
-            int food = sc.nextInt();
+        int completedMenus = 0;
+        for (int i = 0; i < numFood; i++) {
+            int food = sc.nextInt() - 1;
 
-            Iterator<List<Integer>> it = menus.iterator();
-            while (it.hasNext()) {
-                List<Integer> menu = it.next();
-
-                if (menu.contains(food)) {
-                    menu.remove(Integer.valueOf(food));
-                }
-
-                if (menu.isEmpty()) {
-                    eatable_menus++;
-                    it.remove();
+            for (int menuId : foodToMenus.get(food)) {
+                remaining[menuId]--;
+                if (remaining[menuId] == 0) {
+                    completedMenus++;
                 }
             }
 
-            System.out.println(eatable_menus);
+            System.out.println(completedMenus);
         }
+
+        sc.close();
     }
 }
