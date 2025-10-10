@@ -13,40 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/cs/Computer Science; CS.md",
+                "file": "docs/programing/プログラム性能評価の実戦ガイド.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Computer Science; CS"
-            }
-          },
-          {
-            "id": "acb8fbcc6dd08d2f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/cs/Computer Science; CS.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Computer Science; CS"
-            }
-          },
-          {
-            "id": "8ab667323f0ef9e1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/cs/DAG.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "DAG"
+              "title": "プログラム性能評価の実戦ガイド"
             }
           },
           {
@@ -63,8 +35,7 @@
               "title": "git"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -213,16 +184,28 @@
       "obsidian-kindle-plugin:Sync your Kindle highlights": false
     }
   },
-  "active": "8ab667323f0ef9e1",
+  "active": "20df606c7e247dc3",
   "lastOpenFiles": [
+    "ctf/misc/picoCTF/Bases/Bases_Writeup.md",
+    "ctf/misc/picoCTF/Bases",
+    "docs/tool/obsidian/ObsidianでのTODO管理.md",
+    "docs/programing/プログラム性能評価の実戦ガイド.md",
+    "無題のファイル.canvas",
     "docs/cs/Computer Science; CS.md",
+    "無題のファイル.md",
+    "無題のファイル 1.canvas",
+    "2025-10-07.md",
+    "無題のファイル.base",
+    "docs/tool/obsidian",
+    "docs/tool",
+    "README.md",
+    "docs/programing/CS/DotNET 複数プロジェクトの依存関係.md",
     "docs/cs/DAG.md",
+    "docs/kindle/standards-株こそが最強の投資である１億円稼ぐテクニック 新書版.md",
     "docs/kindle/Thomas、-Hunt、村上雅章-達人プログラマー ―熟達に向けたあなたの旅― 第2版.md",
     "docs/git.md",
     "docs/cs",
-    "docs/programing/CS/DotNET 複数プロジェクトの依存関係を完全に理解する.md",
     "ComputerSience",
-    "docs/kindle/standards-株こそが最強の投資である１億円稼ぐテクニック 新書版.md",
     "docs/kindle/イオ-農業新時代　ネクストファーマーズの挑戦.md",
     "docs/kindle/メンタリストDaiGo-自分を操る超集中力.md",
     "docs/kindle/安衛-ピーター・リンチの株で勝つ［新版］―――アマの知恵でプロを出し抜け.md",
@@ -240,18 +223,7 @@
     "docs/kindle/志生-Clean Code　アジャイルソフトウェア達人の技.md",
     "docs/kindle",
     "docs/programing/CS",
-    "無題のファイル.base",
-    "無題のファイル.canvas",
-    "無題のファイル.md",
-    "ctf/misc/picoCTF/Binary_Search/writeup.md",
-    "docs/radare2.md",
-    "docs/programing/四則演算.md",
-    "docs/programing/Set_HashSet.md",
-    "docs/programing/List.md",
     "docs/programing",
-    "docs/linux/command",
-    "docs/linux",
-    "ctf/misc/picoCTF/fixme1.py/fixme1.py",
-    "ctf/misc/picoCTF/fixme1.py"
+    "docs/linux/command"
   ]
 }
