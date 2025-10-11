@@ -1,24 +1,38 @@
 {
   "main": {
-    "id": "dd1f654f1960d97f",
+    "id": "44f73a065f96e59d",
     "type": "split",
     "children": [
       {
-        "id": "1e18dffb46960551",
+        "id": "e6bc6f2b0b1c434d",
         "type": "tabs",
         "children": [
           {
-            "id": "605d5c88978bfe45",
+            "id": "38581fa6e6c6575b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "competitive/atcoder/ABC/404/writeup.md",
+                "file": "docs/programing/プログラム性能評価の実戦ガイド.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "writeup"
+              "title": "プログラム性能評価の実戦ガイド"
+            }
+          },
+          {
+            "id": "c50c5ca387ae3e0a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/git.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "git"
             }
           }
         ]
@@ -27,15 +41,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "6c0bcf5eccb1c8f4",
+    "id": "79ccb6847da24b83",
     "type": "split",
     "children": [
       {
-        "id": "662ffc5975512e23",
+        "id": "9c82d147c5edd12b",
         "type": "tabs",
         "children": [
           {
-            "id": "246c16e522d870a1",
+            "id": "20df606c7e247dc3",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +62,7 @@
             }
           },
           {
-            "id": "56ab2553407e5f0f",
+            "id": "65704f90a8c2a76a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +79,7 @@
             }
           },
           {
-            "id": "2d42083bb72fdb71",
+            "id": "0178edd8e703981d",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +95,20 @@
     "width": 300
   },
   "right": {
-    "id": "119a3bea1ac9e5bf",
+    "id": "e1f2f631dfb9fd48",
     "type": "split",
     "children": [
       {
-        "id": "e047d09906e7944f",
+        "id": "c5dedd9f18e37425",
         "type": "tabs",
         "children": [
           {
-            "id": "42fea1ac23186f88",
+            "id": "bcd9846b5d7d724c",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "competitive/atcoder/ABC/404/writeup.md",
+                "file": "ctf/misc/picoCTF/Binary_Search/writeup.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,12 +122,12 @@
             }
           },
           {
-            "id": "93f8dc0fb288eae6",
+            "id": "52b65ee09ef4d150",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "competitive/atcoder/ABC/404/writeup.md",
+                "file": "ctf/misc/picoCTF/Binary_Search/writeup.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -122,7 +136,7 @@
             }
           },
           {
-            "id": "94ceca6f25349c8a",
+            "id": "cae837b32ba1cb7a",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,12 +151,12 @@
             }
           },
           {
-            "id": "2139cec885649b9c",
+            "id": "208ebdc6d1e41c23",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "competitive/atcoder/ABC/404/writeup.md",
+                "file": "ctf/misc/picoCTF/Binary_Search/writeup.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -166,15 +180,50 @@
       "daily-notes:今日のデイリーノートを開く": false,
       "templates:テンプレートを挿入": false,
       "command-palette:コマンドパレットを開く": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-kindle-plugin:Sync your Kindle highlights": false
     }
   },
-  "active": "605d5c88978bfe45",
+  "active": "20df606c7e247dc3",
   "lastOpenFiles": [
-    "docs/radare2.md",
-    "docs/progress.md",
-    "docs/notes.md",
-    "docs/LaTeX.md",
-    "competitive/atcoder/ABC/401/C_K-bonacci_writeup.md"
+    "ctf/misc/picoCTF/Bases/Bases_Writeup.md",
+    "ctf/misc/picoCTF/Bases",
+    "docs/tool/obsidian/ObsidianでのTODO管理.md",
+    "docs/programing/プログラム性能評価の実戦ガイド.md",
+    "無題のファイル.canvas",
+    "docs/cs/Computer Science; CS.md",
+    "無題のファイル.md",
+    "無題のファイル 1.canvas",
+    "2025-10-07.md",
+    "無題のファイル.base",
+    "docs/tool/obsidian",
+    "docs/tool",
+    "README.md",
+    "docs/programing/CS/DotNET 複数プロジェクトの依存関係.md",
+    "docs/cs/DAG.md",
+    "docs/kindle/standards-株こそが最強の投資である１億円稼ぐテクニック 新書版.md",
+    "docs/kindle/Thomas、-Hunt、村上雅章-達人プログラマー ―熟達に向けたあなたの旅― 第2版.md",
+    "docs/git.md",
+    "docs/cs",
+    "ComputerSience",
+    "docs/kindle/イオ-農業新時代　ネクストファーマーズの挑戦.md",
+    "docs/kindle/メンタリストDaiGo-自分を操る超集中力.md",
+    "docs/kindle/安衛-ピーター・リンチの株で勝つ［新版］―――アマの知恵でプロを出し抜け.md",
+    "docs/kindle/会社四季報編集部-得する株をさがせ！　会社四季報公式ガイドブック.md",
+    "docs/kindle/航平、επιστημη（エピステーメー）-独習C++ 新版.md",
+    "hoge.canvas",
+    "docs/kindle/野中-世界の大富豪2000人は知っている! 4つの自由で「成幸」を手にする方法 impress QuickBooks.md",
+    "docs/kindle/生形大-お金をふやす８つの習慣―――外資系金融マンが教える本当のお金の知識.md",
+    "docs/kindle/武志-株を買うなら最低限知っておきたい ファンダメンタル投資の教科書　改訂版.md",
+    "docs/kindle/片山晃、小松原周-【旧版】勝つ投資　負けない投資.md",
+    "docs/kindle/本田進一郎-有機農業と未来.md",
+    "docs/kindle/泰之-農業で稼ぐ！ 経済学.md",
+    "docs/kindle/高田晃一-２万２０００人超を導いた就活コンサルタントが教える これだけ！内定.md",
+    "docs/kindle/春彦-超訳ニーチェの言葉.md",
+    "docs/kindle/志生-Clean Code　アジャイルソフトウェア達人の技.md",
+    "docs/kindle",
+    "docs/programing/CS",
+    "docs/programing",
+    "docs/linux/command"
   ]
 }
