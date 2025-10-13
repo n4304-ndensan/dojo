@@ -11,14 +11,10 @@
             "id": "38581fa6e6c6575b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/programing/プログラム性能評価の実戦ガイド.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "プログラム性能評価の実戦ガイド"
+              "title": "新規タブ"
             }
           },
           {
@@ -180,8 +176,7 @@
       "daily-notes:今日のデイリーノートを開く": false,
       "templates:テンプレートを挿入": false,
       "command-palette:コマンドパレットを開く": false,
-      "bases:Create new base": false,
-      "obsidian-kindle-plugin:Sync your Kindle highlights": false
+      "bases:Create new base": false
     }
   },
   "active": "20df606c7e247dc3",
