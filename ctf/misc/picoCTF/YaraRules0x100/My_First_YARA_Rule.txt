@@ -1,0 +1,15 @@
+import "pe"
+
+rule YaraRules0x100
+{
+    meta:
+        author = "shogo"
+
+    strings:
+        $str1 = "UPX0" wide ascii
+        $str2 = "AdjustTokenPrivileges" wide ascii
+        $str3 = "LookupPrivilegeValueW" wide ascii
+
+    condition:
+        $str1 or ($str2 and $str3)
+}
