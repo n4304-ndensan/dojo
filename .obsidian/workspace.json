@@ -8,31 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "38581fa6e6c6575b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/programing/４言語/02-４言語-型一覧と修飾子比較.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "02-４言語-型一覧と修飾子比較"
-            }
-          },
-          {
             "id": "c50c5ca387ae3e0a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/git.md",
+                "file": "docs/programing/４言語/03-４言語-標準操作チートシート.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "git"
+              "title": "03-４言語-標準操作チートシート"
             }
           }
         ]
@@ -183,10 +169,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "38581fa6e6c6575b",
+  "active": "c50c5ca387ae3e0a",
   "lastOpenFiles": [
-    "docs/programing/４言語/05-４言語-プリミティブ型完全比較.md",
     "docs/programing/４言語/02-４言語-型一覧と修飾子比較.md",
+    "docs/git.md",
+    "無題のファイル.base",
+    "docs/programing/４言語/05-４言語-プリミティブ型完全比較.md",
     "docs/programing/４言語/01-４言語-横断チートシート.md",
     "docs/programing/４言語/00-４言語-目次.md",
     "docs/cs/アルゴリズム/imos法.md",
@@ -215,9 +203,7 @@
     "docs/programing/プログラム性能評価の実戦ガイド.md",
     "無題のファイル.canvas",
     "docs/cs/Computer Science; CS.md",
-    "無題のファイル.md",
     "無題のファイル 1.canvas",
-    "無題のファイル.base",
     "docs/tool/obsidian",
     "docs/tool",
     "docs/cs",
