@@ -1,5 +1,5 @@
 
-C# / Rust / Python / TypeScript（Node.js）について、コマンドライン引数・環境変数・設定ファイルを**層（レイヤ）**として統合する方法を横断比較する。最小例→推奨ライブラリ→レイヤ統合→よくある落とし穴の順で整理。
+C# / Rust / Python / TypeScript（Node.js）について、コマンドライン引数・環境変数・設定ファイルを**層（レイヤ）** として統合する方法を横断比較する。最小例→推奨ライブラリ→レイヤ統合→よくある落とし穴の順で整理。
 
 ---
 
@@ -18,7 +18,7 @@ C# / Rust / Python / TypeScript（Node.js）について、コマンドライン
 
 ## 1. CLI 引数（最小例）
 
-### 1.1 C#（最小）
+C#（最小）
 
 ```csharp
 // Program.cs（top-level statements）
@@ -29,7 +29,7 @@ for (int i = 0; i < args.Length - 1; i++)
 Console.WriteLine(argsDic.GetValueOrDefault("port", "8080"));
 ```
 
-### 1.2 Rust（最小）
+Rust（最小）
 
 ```rust
 // cargo run -- --port 8081
@@ -41,7 +41,7 @@ while let Some(k) = it.next() {
 println!("{}", port);
 ```
 
-### 1.3 Python（最小）
+Python（最小）
 
 ```python
 # python app.py --port 8081
@@ -54,7 +54,7 @@ if "--port" in argv:
 print(port)
 ```
 
-### 1.4 TypeScript（最小, Node 18+）
+TypeScript（最小, Node 18+）
 
 ```ts
 // node --loader ts-node/esm app.ts --port 8081
@@ -68,7 +68,7 @@ console.log(port);
 
 ## 2. CLI 引数（推奨ライブラリ）
 
-### 2.1 C#（System.CommandLine）
+C#（System.CommandLine）
 
 ```csharp
 // <PackageReference Include="System.CommandLine" Version="2.*" />
@@ -79,7 +79,7 @@ root.SetHandler((int p) => Console.WriteLine(p), port);
 return await root.InvokeAsync(args);
 ```
 
-### 2.2 Rust（clap）
+Rust（clap）
 
 ```rust
 // Cargo.toml: clap = { version = "4", features = ["derive"] }
@@ -89,7 +89,7 @@ struct Opt { #[arg(long, default_value_t = 8080)] port: u16 }
 fn main(){ let opt = Opt::parse(); println!("{}", opt.port); }
 ```
 
-### 2.3 Python（argparse / Typer）
+Python（argparse / Typer）
 
 ```python
 # argparse（標準）
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     app()
 ```
 
-### 2.4 TypeScript（yargs / commander）
+TypeScript（yargs / commander）
 
 ```ts
 // npm i yargs yargs-parser @types/yargs --save
@@ -125,27 +125,27 @@ console.log(argv.port);
 
 ## 3. 環境変数（最小）
 
-### C#
+C#
 
 ```csharp
 var envPort = Environment.GetEnvironmentVariable("APP_PORT");
 int port = int.TryParse(envPort, out var p) ? p : 8080;
 ```
 
-### Rust
+Rust
 
 ```rust
 let port = std::env::var("APP_PORT").ok().and_then(|v| v.parse().ok()).unwrap_or(8080);
 ```
 
-### Python
+Python
 
 ```python
 import os
 port = int(os.getenv("APP_PORT", "8080"))
 ```
 
-### TypeScript（Node）
+TypeScript（Node）
 
 ```ts
 const port = Number(process.env.APP_PORT ?? 8080);
@@ -155,7 +155,7 @@ const port = Number(process.env.APP_PORT ?? 8080);
 
 ## 4. .env ファイル（任意）
 
-### C#
+C\#
 
 - 標準では `.env` ローダーがないため、`DotNetEnv` 等のパッケージを使用。
     
@@ -165,14 +165,14 @@ const port = Number(process.env.APP_PORT ?? 8080);
 DotNetEnv.Env.Load(); // .env を現在のプロセス環境に流し込む
 ```
 
-### Rust
+Rust
 
 ```rust
 // dotenvy = "0.15"
 dotenvy::dotenv().ok(); // .env を読み込んで std::env に反映
 ```
 
-### Python
+Python
 
 ```python
 # pip install python-dotenv
@@ -180,7 +180,7 @@ from dotenv import load_dotenv
 load_dotenv()  # .env を読み込み
 ```
 
-### TypeScript（Node）
+TypeScript（Node）
 
 ```ts
 // npm i dotenv
@@ -191,7 +191,7 @@ import 'dotenv/config'; // または: import dotenv from 'dotenv'; dotenv.config
 
 ## 5. 設定ファイル（JSON / YAML / TOML / INI）
 
-### 5.1 C#（Microsoft.Extensions.Configuration）
+C#（Microsoft.Extensions.Configuration）
 
 ```csharp
 // Microsoft.Extensions.Configuration.* を利用
@@ -208,7 +208,7 @@ string? dbUrl = cfg["db:url"]; // 区切りはコロン
 
 備考: 標準は JSON/INI/環境変数/コマンドラインをサポート（YAML は外部パッケージ）。
 
-### 5.2 Rust（`config` クレート + `serde`）
+Rust（`config` クレート + `serde`）
 
 ```rust
 // Cargo.toml: config = "0.14", serde = { version = "1", features = ["derive"] }
@@ -225,7 +225,7 @@ let s: Settings = settings.try_deserialize()?;
 let port = s.port.unwrap_or(8080);
 ```
 
-### 5.3 Python（標準 + 外部）
+Python（標準 + 外部）
 
 ```python
 import json, os
@@ -252,7 +252,7 @@ except ModuleNotFoundError:
     pass
 ```
 
-### 5.4 TypeScript（Node）
+TypeScript（Node）
 
 ```ts
 // JSON
@@ -273,7 +273,7 @@ if (fs.existsSync('config.toml')) Object.assign(cfg, toml.parse(fs.readFileSync(
 
 ## 6. レイヤ統合（CLI > ENV > FILE > DEFAULT）
 
-### 6.1 C#（一括ビルダー推奨）
+C#（一括ビルダー推奨）
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -288,7 +288,7 @@ var debug = cfg.GetValue("debug", false);
 var dbUrl = cfg["db:url"];
 ```
 
-### 6.2 Rust（`clap` + `config`）
+Rust（`clap` + `config`）
 
 ```rust
 use clap::Parser;
@@ -305,7 +305,7 @@ let port = opt.port
     .unwrap_or(8080);
 ```
 
-### 6.3 Python（`argparse` + `dotenv` + 各ファイル）
+Python（`argparse` + `dotenv` + 各ファイル）
 
 ```python
 import argparse, os, json
@@ -329,7 +329,7 @@ if args.debug: cfg["debug"] = True
 print(cfg)
 ```
 
-### 6.4 TypeScript（`yargs` + `dotenv` + ファイル）
+TypeScript（`yargs` + `dotenv` + ファイル）
 
 ```ts
 import 'dotenv/config';
@@ -399,8 +399,8 @@ db:
 
 ### 参照
 
-- モジュール・依存・テスト: `07-４言語-モジュール-名前空間-依存管理-テスト最小例.md`
+- モジュール・依存・テスト: [[07-４言語-モジュール-名前空間-依存管理-テスト最小例]]
     
-- 文字列・正規表現・パス: `06-４言語-文字列フォーマット-正規表現-パス操作.md`
+- 文字列・正規表現・パス: [[06-４言語-文字列フォーマット-正規表現-パス操作]]
     
-- 標準操作: `03-４言語-標準操作チートシート.md`
+- 標準操作: [[03-４言語-標準操作チートシート]]
