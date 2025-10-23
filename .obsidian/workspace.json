@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "template/rust/Rust 入力チートシート.md",
+                "file": "competitive/atcoder/ABC/399/ABC399-Writeup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Rust 入力チートシート"
+              "title": "ABC399-Writeup"
             }
           }
         ]
@@ -171,9 +171,11 @@
   },
   "active": "c50c5ca387ae3e0a",
   "lastOpenFiles": [
-    "docs/Queue-it.md",
-    "template/rust/Rust 入力チートシート.md",
+    "docs/cs/データ構造/グラフ/単純無向グラフ.md",
+    "competitive/atcoder/ABC/399/ABC399-Writeup.md",
     "docs/cs/データ構造/グラフ/森.md",
+    "template/rust/Rust 入力チートシート.md",
+    "docs/Queue-it.md",
     "docs/cs/データ構造/グラフ/自己ループ.md",
     "docs/cs/DAG.md",
     "docs/cs/Computer Science; CS.md",
@@ -198,8 +200,6 @@
     "ctf/misc/picoCTF/dont-you-love-banners/dont-you-love-banners-writeup.md",
     "ctf/misc/picoCTF/dont-you-love-banners",
     "docs/programing/４言語/４言語ファイル操作.md",
-    "docs/programing/４言語/４言語 プリミティブ型完全比較チートシート.md",
-    "docs/programing/４言語/03. ４言語標準操作チートシート.md",
     "docs/programing/４言語",
     "ctf/misc/picoCTF/Bases",
     "無題のファイル.canvas",
