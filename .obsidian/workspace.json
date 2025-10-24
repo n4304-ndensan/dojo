@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/programing/CSharp/依存性注入（DI）ガイド.md",
+                "file": "ctf/misc/picoCTF/ASCII_Numbers/ASCII_Numbers-Writeup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "依存性注入（DI）ガイド"
+              "title": "ASCII_Numbers-Writeup"
             }
           }
         ]
@@ -169,8 +169,12 @@
       "bases:Create new base": false
     }
   },
-  "active": "20df606c7e247dc3",
+  "active": "c50c5ca387ae3e0a",
   "lastOpenFiles": [
+    "docs/linux/command/xxd.md",
+    "ctf/misc/picoCTF/ASCII_Numbers/ASCII_Numbers-Writeup.md",
+    "docs/programing/CSharp/依存性注入（DI）ガイド.md",
+    "ctf/misc/picoCTF/ASCII_Numbers",
     "C_Make_it_Forest.exe",
     "C_Make_it_Forest.C_Make_it_Forest.ea2931511a0a04eb-cgu.1.rcgu.o",
     "C_Make_it_Forest.C_Make_it_Forest.ea2931511a0a04eb-cgu.0.rcgu.o",
@@ -178,7 +182,6 @@
     "C_Make_it_Forest.8dskqsqnpj3pgh1wrnnvkmh45.rcgu.o",
     "rmetaPOHlvS",
     "docs/programing/CSharp/DotNET 複数プロジェクトの依存関係.md",
-    "docs/programing/CSharp/依存性注入（DI）ガイド.md",
     "docs/programing/４言語/01-４言語-横断チートシート.md",
     "docs/linux/command/env_edit.md",
     "ctf/misc/picoCTF/SansAlpha/SansAlpha-Writeup.md",
@@ -186,8 +189,6 @@
     "lib/rust/isqrt.rs",
     "competitive/atcoder/ABC/400/C_2a_b2.rs",
     "competitive/atcoder/ABC/400/ABC400-Writeup.md",
-    "competitive/atcoder/ABC/400",
-    "competitive/atcoder/ABC/399/C_Make_it_Forest.rs",
     "competitive/atcoder/ABC/399/ABC399-Writeup.md",
     "docs/programing/４言語/02-４言語-型一覧と修飾子比較.md",
     "docs/cs/アルゴリズム/BFS.md",
@@ -206,7 +207,6 @@
     "docs/programing/４言語/08-４言語-CLI引数-環境変数-設定管理.md",
     "docs/programing/４言語/07-４言語-モジュール-名前空間-依存管理-テスト最小例.md",
     "docs/programing/４言語/06-４言語-文字列フォーマット-正規表現-パス操作.md",
-    "docs/programing/４言語/05-４言語-プリミティブ型完全比較.md",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
