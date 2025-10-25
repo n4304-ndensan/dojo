@@ -1,4 +1,5 @@
 use std::io::{self, Read};
+use std::collections::HashSet;
 
 #[derive(Debug)]
 struct UnionFind {
