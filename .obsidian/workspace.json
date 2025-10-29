@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/programing/四則演算.md",
+                "file": "docs/cs/6_システム分野/OS/Memory.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "四則演算"
+              "title": "Memory"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 279.5
+    "width": 200
   },
   "right": {
     "id": "e1f2f631dfb9fd48",
@@ -171,17 +171,35 @@
   },
   "active": "c50c5ca387ae3e0a",
   "lastOpenFiles": [
+    "docs/cs/6_システム分野/OS/Memory_Dynamics.md",
+    "docs/cs/6_システム分野/OS/Memory.md",
+    "docs/cs/6_システム分野/OS/CPU.md",
+    "docs/cs/6_システム分野/OS/linux/command/top.md",
+    "docs/cs/5_理論分野/理論分野.md",
+    "docs/cs/Computer Science; CS.md",
+    "docs/cs/5_理論分野/自動機械・形式言語/自動機械・形式言語目次.md",
+    "docs/cs/DAG.md",
+    "docs/programing/CSharp/DotNET 複数プロジェクトの依存関係.md",
+    "competitive/atcoder/ABC/399/ABC399-Writeup.md",
+    "docs/cs/5_理論分野/データ構造/グラフ/連結成分数.md",
+    "docs/programing/４言語/03-４言語-標準操作チートシート.md",
+    "docs/cs/5_理論分野/計算量理論/計算量理論目次.md",
+    "docs/cs/5_理論分野/計算可能性理論/計算可能性理論目次.md",
+    "docs/cs/5_理論分野/アルゴリズム/アルゴリズム目次.md",
+    "docs/cs/5_理論分野/データ構造/データ構造目次.md",
+    "docs/cs/5_理論分野/自動機械・形式言語",
+    "docs/cs/5_理論分野/計算可能性理論",
+    "docs/cs/5_理論分野/計算量理論",
+    "docs/base64.md",
+    "docs/cs/6_システム分野/OS",
+    "docs/cs/6_システム分野",
+    "docs/cs/5_理論分野",
+    "docs/cs/6_システム分野/分散システム/CAP定理.md",
+    "docs/cs/6_システム分野/分散システム",
+    "docs/programing/四則演算.md",
     "competitive/atcoder/ABC/429/B_N_1",
     "competitive/atcoder/ABC/429/B_N_1.B_N_1.c75f93754c2eb085-cgu.0.rcgu.o",
     "competitive/atcoder/ABC/429/B_N_1.7z8a2ytlwnfg6wpnu6uwucgt2.rcgu.o",
-    "competitive/atcoder/ABC/429/rmetag5ehVb/full.rmeta",
-    "competitive/atcoder/ABC/429/rmetag5ehVb",
-    "competitive/atcoder/ABC/429/B_N_1.rs",
-    "competitive/atcoder/ABC/429/B_N-1.rs",
-    "competitive/atcoder/ABC/429/A_Too_Many_Requests.A_Too_Many_Requests.ffd42025a977f03a-cgu.0.rcgu.o",
-    "competitive/atcoder/ABC/429/A_Too_Many_Requests.2ed17tc16cso3jfif97losa26.rcgu.o",
-    "competitive/atcoder/ABC/429/rmetaD0PIBh/full.rmeta",
-    "competitive/atcoder/ABC/429/rmetaD0PIBh",
     "competitive/atcoder/ABC/429/ABC429-Writeup.md",
     "ctf/misc/picoCTF/ASCII_Numbers/ASCII_Numbers-Writeup.md",
     "competitive/atcoder/ABC/398/ABC398-Writeup.md",
@@ -189,24 +207,6 @@
     "docs/linux/command/man.md",
     "docs/linux/command/ssh.md",
     "docs/programing/Set_HashSet.md",
-    "docs/programing/List.md",
-    "docs/programing/Dictionary_HashMap.md",
-    "docs/programing/４言語/01-４言語-横断チートシート.md",
-    "docs/linux/command/env_edit.md",
-    "ctf/misc/picoCTF/SansAlpha/SansAlpha-Writeup.md",
-    "competitive/atcoder/ABC/400/ABC400-Writeup.md",
-    "competitive/atcoder/ABC/399/ABC399-Writeup.md",
-    "docs/programing/４言語/02-４言語-型一覧と修飾子比較.md",
-    "docs/cs/アルゴリズム/BFS.md",
-    "template/rust/Rust 入力チートシート.md",
-    "docs/Queue-it.md",
-    "docs/cs/データ構造/グラフ/森.md",
-    "docs/cs/データ構造/グラフ/自己ループ.md",
-    "docs/cs/DAG.md",
-    "docs/cs/Computer Science; CS.md",
-    "README.md",
-    "docs/programing/４言語/00-４言語-目次.md",
-    "docs/programing/４言語/12-４言語-概念設計・言語哲学.md",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
