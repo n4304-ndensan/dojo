@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e6bc6f2b0b1c434d",
+        "id": "b80a1836f075f1c3",
         "type": "tabs",
         "children": [
           {
-            "id": "c50c5ca387ae3e0a",
+            "id": "3075d19e362bc578",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ctf/misc/picoCTF/Special/Special-Writeup.md",
+                "file": "2025-11-02.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Special-Writeup"
+              "title": "2025-11-02"
             }
           }
         ]
@@ -74,7 +74,8 @@
               "title": "ブックマーク"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -169,44 +170,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "c50c5ca387ae3e0a",
+  "active": "3075d19e362bc578",
   "lastOpenFiles": [
-    "docs/cs/6_システム分野/OS/linux/command/null_command.md",
+    "competitive/atcoder/ABC/430/C_Truck_Driver.rs",
+    "C_Truck_Driver.rs",
+    "C.C.d345080736cde294-cgu.1.rcgu.o",
+    "C.C.d345080736cde294-cgu.0.rcgu.o",
+    "C.ak55vblq1vnvnagb59xddyddp.rcgu.o",
+    "competitive/atcoder/ABC/430/ABC430-Writeup.md",
+    "2025-11-02.md",
+    "尺取り.md",
+    "competitive/atcoder/ABC/406/writeup.md",
+    "competitive/atcoder/ABC/430/B_Count_Subgrid.rs",
+    "competitive/atcoder/ABC/430/A_Candy_Cookie_Law.rs",
+    "competitive/atcoder/ABC/430/B.rs",
+    "competitive/atcoder/ABC/430",
+    "competitive/atcoder/ABC/429/430",
+    "C.pdb",
+    "competitive/atcoder/ABC/405/writeup.md",
+    "competitive/atcoder/ABC/404/writeup.md",
+    "competitive/atcoder/ABC/403/writeup.md",
+    "competitive/atcoder/ABC/402/writeup.md",
+    "competitive/atcoder/ABC/401/C_K-bonacci_writeup.md",
+    "competitive/atcoder/ABC/399/ABC399-Writeup.md",
+    "competitive/atcoder/ABC/398/ABC398-Writeup.md",
+    "ctf/misc/picoCTF/2Warm/2Warm_Writeup.md",
     "ctf/misc/picoCTF/Special/Special-Writeup.md",
+    "ctf/misc/picoCTF/Permissions/Permissions-Writeup.md",
+    "docs/cs/6_システム分野/OS/linux/command/null_command.md",
     "docs/cs/6_システム分野/ネットワーク/ネットワーク目次.md",
-    "ctf/misc/picoCTF/Special",
     "docs/cs/6_システム分野/プログラミング言語・コンパイラ/プログラミング言語・コンパイラ目次.md",
     "docs/cs/6_システム分野/分散システム/分散システム目次.md",
     "docs/cs/6_システム分野/OS/OS目次.md",
     "docs/cs/6_システム分野/データベース/データベース目次.md",
     "docs/cs/Computer Science; CS.md",
     "docs/cs/6_システム分野/システム分野.md",
-    "docs/cs/6_システム分野/分散システム",
-    "docs/cs/6_システム分野/データベース",
-    "docs/cs/6_システム分野/ネットワーク",
-    "docs/cs/6_システム分野/プログラミング言語・コンパイラ",
     "docs/programing/四則演算.md",
     "ctf/misc/picoCTF/Specialer/Specialer-Writeup.md",
-    "ctf/misc/picoCTF/Specialer",
     "docs/cs/6_システム分野/OS/linux/command/xxd.md",
-    "docs/cs/6_システム分野/OS/linux/command/tr.md",
-    "docs/cs/6_システム分野/OS/linux/command/top.md",
-    "docs/cs/6_システム分野/OS/linux/command/strings.md",
-    "docs/cs/6_システム分野/OS/linux/command/nc.md",
-    "docs/cs/6_システム分野/OS/linux/command/cat.md",
-    "docs/cs/6_システム分野/OS/linux/command",
-    "docs/cs/6_システム分野/OS/Memory_Dynamics.md",
-    "docs/cs/6_システム分野/OS/Memory.md",
-    "docs/cs/6_システム分野/OS/linux",
-    "docs/cs/6_システム分野/OS/CPU.md",
-    "docs/cs/6_システム分野/OS",
-    "docs/cs/6_システム分野",
-    "docs/cs/5_理論分野/データ構造/グラフ/連結成分数.md",
-    "docs/cs/5_理論分野/データ構造/グラフ/自己ループ.md",
-    "docs/cs/5_理論分野/データ構造/グラフ/森.md",
-    "docs/cs/5_理論分野/データ構造/グラフ/多重辺.md",
-    "docs/cs/5_理論分野/データ構造/グラフ/木.md",
-    "docs/cs/5_理論分野/データ構造/グラフ/単純無向グラフ.md",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
