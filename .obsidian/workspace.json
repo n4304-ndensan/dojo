@@ -11,14 +11,10 @@
             "id": "3075d19e362bc578",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2025-11-02.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "2025-11-02"
+              "title": "新規タブ"
             }
           }
         ]
@@ -172,21 +168,21 @@
   },
   "active": "3075d19e362bc578",
   "lastOpenFiles": [
-    "competitive/atcoder/ABC/430/C_Truck_Driver.rs",
-    "C_Truck_Driver.rs",
-    "C.C.d345080736cde294-cgu.1.rcgu.o",
-    "C.C.d345080736cde294-cgu.0.rcgu.o",
-    "C.ak55vblq1vnvnagb59xddyddp.rcgu.o",
-    "competitive/atcoder/ABC/430/ABC430-Writeup.md",
+    "competitive/atcoder/ABC/428/ABC428_Writeup.md",
+    "competitive/atcoder/ABC/428/B_Most_Frequent_Substrings",
+    "competitive/atcoder/ABC/428/B_Most_Frequent_Substrings.B_Most_Frequent_Substrings.281bcf639cf4dc9-cgu.2.rcgu.o",
+    "competitive/atcoder/ABC/428/B_Most_Frequent_Substrings.B_Most_Frequent_Substrings.281bcf639cf4dc9-cgu.3.rcgu.o",
+    "competitive/atcoder/ABC/428/B_Most_Frequent_Substrings.B_Most_Frequent_Substrings.281bcf639cf4dc9-cgu.1.rcgu.o",
+    "competitive/atcoder/ABC/428/B_Most_Frequent_Substrings.B_Most_Frequent_Substrings.281bcf639cf4dc9-cgu.4.rcgu.o",
+    "competitive/atcoder/ABC/428/B_Most_Frequent_Substrings.B_Most_Frequent_Substrings.281bcf639cf4dc9-cgu.0.rcgu.o",
+    "competitive/atcoder/ABC/428/B_Most_Frequent_Substrings.d24mdos4kmh3d5co6f1o80hv4.rcgu.o",
+    "competitive/atcoder/ABC/428/rmeta0u9Lo4/full.rmeta",
+    "competitive/atcoder/ABC/428/rmeta0u9Lo4",
+    "competitive/atcoder/ABC/428/B_Most_Frequent_Substrings.rs",
     "2025-11-02.md",
+    "competitive/atcoder/ABC/430/ABC430-Writeup.md",
     "尺取り.md",
     "competitive/atcoder/ABC/406/writeup.md",
-    "competitive/atcoder/ABC/430/B_Count_Subgrid.rs",
-    "competitive/atcoder/ABC/430/A_Candy_Cookie_Law.rs",
-    "competitive/atcoder/ABC/430/B.rs",
-    "competitive/atcoder/ABC/430",
-    "competitive/atcoder/ABC/429/430",
-    "C.pdb",
     "competitive/atcoder/ABC/405/writeup.md",
     "competitive/atcoder/ABC/404/writeup.md",
     "competitive/atcoder/ABC/403/writeup.md",
