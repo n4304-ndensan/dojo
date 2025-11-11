@@ -1,5 +1,3 @@
-# ABC398 - Writeup
-
 ## C - Uniqueness
 
 ### 問題概要
