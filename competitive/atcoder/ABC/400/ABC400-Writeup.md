@@ -1,5 +1,4 @@
-# AtCoder Beginner Contest 400
-
+#偶奇 
 ## C - $2^a b^2$
 
 ### 問題概要

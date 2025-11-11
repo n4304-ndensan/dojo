@@ -1,5 +1,3 @@
-# ABC399 
-
 ## C - Make it Forest
 
 ### 問題概要

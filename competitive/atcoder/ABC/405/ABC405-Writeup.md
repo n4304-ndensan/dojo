@@ -1,4 +1,5 @@
-# ABC 406 C - Sum of Product
+[[累積和]]
+# C - Sum of Product
 
 ## 問題概要
 
