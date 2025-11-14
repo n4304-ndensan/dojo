@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b80a1836f075f1c3",
+        "id": "05974e341eab2948",
         "type": "tabs",
         "children": [
           {
-            "id": "3075d19e362bc578",
+            "id": "cf687b307f6d6ca8",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -70,8 +70,7 @@
               "title": "ブックマーク"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -166,19 +165,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "3075d19e362bc578",
+  "active": "20df606c7e247dc3",
   "lastOpenFiles": [
+    "docs/linux/command/man.md",
+    "docs/linux/command",
+    "docs/linux",
+    "ctf/misc/picoCTF/1_wanna_b3_a_r0ck5tar/lyrics.txt",
+    "ctf/misc/picoCTF/1_wanna_b3_a_r0ck5tar/1_wanna_b3_a_r0ck5tar-Writeup.md",
+    "ctf/misc/picoCTF/1_wanna_b3_a_r0ck5tar",
+    "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.C_Brackets_Stack_Query.2c45a0ef04888d99-cgu.0.rcgu.o",
+    "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.8k8i1c9b6a2ej6ot7dzlw0u4k.rcgu.o",
+    "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.exe",
+    "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.rs",
     "competitive/atcoder/ABC/431/D_Robot_Customize.D_Robot_Customize.8c58983a45b1ae9-cgu.0.rcgu.o",
     "competitive/atcoder/ABC/431/D_Robot_Customize.ak1pdikhjfww403xtwn9m9t3p.rcgu.o",
-    "competitive/atcoder/ABC/431/rmetaceIMoi/full.rmeta",
-    "competitive/atcoder/ABC/431/rmetaceIMoi",
-    "competitive/atcoder/ABC/431/rmetan6anPR/full.rmeta",
-    "competitive/atcoder/ABC/431/rmetan6anPR",
-    "competitive/atcoder/ABC/431/rmetaKAYhYz/full.rmeta",
-    "competitive/atcoder/ABC/431/rmetaKAYhYz",
-    "competitive/atcoder/ABC/431/rmetaRVS5LA/full.rmeta",
-    "competitive/atcoder/ABC/431/rmetaRVS5LA",
-    "competitive/atcoder/ABC/431/rmetagFwDqh/full.rmeta",
     "ctf/misc/picoCTF/PW_Crack_3/PW_Crack_3-Writeup.md",
     "無題のファイル.md",
     "ctf/misc/picoCTF/binhexa/binhexa-Writeup.md",
@@ -203,7 +203,6 @@
     "ctf/misc/picoCTF/chrono/chrono-Writeup.md",
     "competitive/atcoder/ABC/428/ABC428_Writeup.md",
     "2025-11-02.md",
-    "competitive/atcoder/ABC/430/ABC430-Writeup.md",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
