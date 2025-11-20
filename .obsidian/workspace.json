@@ -11,13 +11,32 @@
             "id": "cf687b307f6d6ca8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）レジスタ.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新規タブ"
+              "title": "アセンブリ言語（x86-64）レジスタ"
+            }
+          },
+          {
+            "id": "52ef83a8d890c96d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/cs/6_システム分野/OS/unix/command/xxd.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "xxd"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -165,8 +184,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "20df606c7e247dc3",
+  "active": "52ef83a8d890c96d",
   "lastOpenFiles": [
+    "ctf/misc/picoCTF/Based/Based-Writeup.md",
+    "ctf/misc/picoCTF/Based",
+    "docs/cs/6_システム分野/OS/unix/command/strings.md",
+    "docs/cs/6_システム分野/OS/unix/command/cat.md",
+    "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）レジスタ.md",
+    "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）.md",
     "docs/cs/5_理論分野/アルゴリズム/DP.md",
     "docs/linux/command/man.md",
     "docs/linux/command",
@@ -179,7 +204,6 @@
     "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.exe",
     "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.rs",
     "competitive/atcoder/ABC/431/D_Robot_Customize.D_Robot_Customize.8c58983a45b1ae9-cgu.0.rcgu.o",
-    "competitive/atcoder/ABC/431/D_Robot_Customize.ak1pdikhjfww403xtwn9m9t3p.rcgu.o",
     "ctf/misc/picoCTF/PW_Crack_3/PW_Crack_3-Writeup.md",
     "無題のファイル.md",
     "ctf/misc/picoCTF/binhexa/binhexa-Writeup.md",
@@ -195,14 +219,9 @@
     "docs/cs/6_システム分野/OS/unix/command/tr.md",
     "docs/cs/6_システム分野/OS/unix/command/xxd.md",
     "docs/cs/6_システム分野/OS/unix/command/top.md",
-    "docs/cs/6_システム分野/OS/unix/command/strings.md",
     "docs/cs/6_システム分野/OS/unix/command/null_command.md",
     "docs/cs/6_システム分野/OS/unix/command/nc.md",
-    "docs/cs/6_システム分野/OS/unix/command/cat.md",
     "docs/cs/6_システム分野/OS/unix/cron.md",
-    "docs/cs/6_システム分野/OS/linux/cron.md",
-    "ctf/misc/picoCTF/chrono/chrono-Writeup.md",
-    "competitive/atcoder/ABC/428/ABC428_Writeup.md",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
