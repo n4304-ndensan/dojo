@@ -186,6 +186,9 @@
   },
   "active": "52ef83a8d890c96d",
   "lastOpenFiles": [
+    "ctf/misc/picoCTF/mus1c/mus1c-Writeup.md",
+    "ctf/misc/picoCTF/mus1c/lyrics.txt",
+    "ctf/misc/picoCTF/mus1c",
     "ctf/misc/picoCTF/Based/Based-Writeup.md",
     "ctf/misc/picoCTF/Based",
     "docs/cs/6_システム分野/OS/unix/command/strings.md",
@@ -202,8 +205,6 @@
     "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.C_Brackets_Stack_Query.2c45a0ef04888d99-cgu.0.rcgu.o",
     "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.8k8i1c9b6a2ej6ot7dzlw0u4k.rcgu.o",
     "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.exe",
-    "competitive/atcoder/ABC/428/C_Brackets_Stack_Query.rs",
-    "competitive/atcoder/ABC/431/D_Robot_Customize.D_Robot_Customize.8c58983a45b1ae9-cgu.0.rcgu.o",
     "ctf/misc/picoCTF/PW_Crack_3/PW_Crack_3-Writeup.md",
     "無題のファイル.md",
     "ctf/misc/picoCTF/binhexa/binhexa-Writeup.md",
@@ -221,7 +222,6 @@
     "docs/cs/6_システム分野/OS/unix/command/top.md",
     "docs/cs/6_システム分野/OS/unix/command/null_command.md",
     "docs/cs/6_システム分野/OS/unix/command/nc.md",
-    "docs/cs/6_システム分野/OS/unix/cron.md",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
