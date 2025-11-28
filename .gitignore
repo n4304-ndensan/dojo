@@ -31,6 +31,10 @@ __pycache__/
 dist/
 build/
 
+# .NET
+bin/
+obj/
+
 # Virtual environments
 .env
 .venv
@@ -63,6 +67,9 @@ Desktop.ini
 
 # VSCode
 .vscode/
+
+# Visual Studio
+.vs/
 
 # ========================================
 # Others
