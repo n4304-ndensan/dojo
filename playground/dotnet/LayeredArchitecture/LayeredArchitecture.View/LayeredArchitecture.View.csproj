@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LayeredArchitecture.ViewControl\LayeredArchitecture.ViewControl.csproj" />
+    <ProjectReference Include="..\LayeredArchitecture.ViewCommon\LayeredArchitecture.ViewCommon.csproj" />
+    <ProjectReference Include="..\LayeredArchitecture.Models\LayeredArchitecture.Models.csproj" />
+  </ItemGroup>
+
+</Project>
