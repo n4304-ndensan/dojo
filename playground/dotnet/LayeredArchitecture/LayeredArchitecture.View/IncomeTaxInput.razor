@@ -1,0 +1,30 @@
+@page "/income-tax"
+@using LayeredArchitecture.Models
+
+<h3>所得税計算 - 入力</h3>
+
+<div class="form">
+    <label>給与収入</label>
+    <input type="number" @bind="_input.Salary" />
+
+    <label>社会保険料</label>
+    <input type="number" @bind="_input.SocialInsurance" />
+
+    <label>扶養家族数</label>
+    <input type="number" @bind="_input.Dependants" />
+
+    <label>追加控除額</label>
+    <input type="number" @bind="_input.AdditionalDeductions" />
+
+    <button @onclick="OnCalculateAsync">計算する</button>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(_errorMessage))
+{
+    <p class="text-danger">@_errorMessage</p>
+}
+
+@if (!string.IsNullOrWhiteSpace(_infoMessage))
+{
+    <p>@_infoMessage</p>
+}

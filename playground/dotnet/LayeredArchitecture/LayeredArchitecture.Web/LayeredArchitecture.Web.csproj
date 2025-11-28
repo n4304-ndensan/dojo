@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LayeredArchitecture.View\LayeredArchitecture.View.csproj" />
+    <ProjectReference Include="..\LayeredArchitecture.ViewControl\LayeredArchitecture.ViewControl.csproj" />
+    <ProjectReference Include="..\LayeredArchitecture.ViewCommon\LayeredArchitecture.ViewCommon.csproj" />
+    <ProjectReference Include="..\LayeredArchitecture.BusinessControl\LayeredArchitecture.BusinessControl.csproj" />
+    <ProjectReference Include="..\LayeredArchitecture.Business\LayeredArchitecture.Business.csproj" />
+    <ProjectReference Include="..\LayeredArchitecture.BusinessCommon\LayeredArchitecture.BusinessCommon.csproj" />
+    <ProjectReference Include="..\LayeredArchitecture.Models\LayeredArchitecture.Models.csproj" />
+  </ItemGroup>
+
+</Project>
