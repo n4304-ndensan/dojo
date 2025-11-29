@@ -4,67 +4,39 @@
     "type": "split",
     "children": [
       {
-        "id": "e6bc6f2b0b1c434d",
+        "id": "05974e341eab2948",
         "type": "tabs",
         "children": [
           {
-            "id": "38581fa6e6c6575b",
+            "id": "cf687b307f6d6ca8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/cs/Computer Science; CS.md",
+                "file": "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）レジスタ.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Computer Science; CS"
+              "title": "アセンブリ言語（x86-64）レジスタ"
             }
           },
           {
-            "id": "acb8fbcc6dd08d2f",
+            "id": "52ef83a8d890c96d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/cs/Computer Science; CS.md",
+                "file": "playground/dotnet/LayeredArchitecture/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Computer Science; CS"
-            }
-          },
-          {
-            "id": "8ab667323f0ef9e1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/cs/DAG.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "DAG"
-            }
-          },
-          {
-            "id": "c50c5ca387ae3e0a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/git.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "git"
+              "title": "README"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -121,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 279.5
   },
   "right": {
     "id": "e1f2f631dfb9fd48",
@@ -209,49 +181,49 @@
       "daily-notes:今日のデイリーノートを開く": false,
       "templates:テンプレートを挿入": false,
       "command-palette:コマンドパレットを開く": false,
-      "bases:Create new base": false,
-      "obsidian-kindle-plugin:Sync your Kindle highlights": false
+      "bases:Create new base": false
     }
   },
-  "active": "8ab667323f0ef9e1",
+  "active": "52ef83a8d890c96d",
   "lastOpenFiles": [
-    "docs/cs/Computer Science; CS.md",
-    "docs/cs/DAG.md",
-    "docs/kindle/Thomas、-Hunt、村上雅章-達人プログラマー ―熟達に向けたあなたの旅― 第2版.md",
-    "docs/git.md",
-    "docs/cs",
-    "docs/programing/CS/DotNET 複数プロジェクトの依存関係を完全に理解する.md",
-    "ComputerSience",
-    "docs/kindle/standards-株こそが最強の投資である１億円稼ぐテクニック 新書版.md",
-    "docs/kindle/イオ-農業新時代　ネクストファーマーズの挑戦.md",
-    "docs/kindle/メンタリストDaiGo-自分を操る超集中力.md",
-    "docs/kindle/安衛-ピーター・リンチの株で勝つ［新版］―――アマの知恵でプロを出し抜け.md",
-    "docs/kindle/会社四季報編集部-得する株をさがせ！　会社四季報公式ガイドブック.md",
-    "docs/kindle/航平、επιστημη（エピステーメー）-独習C++ 新版.md",
-    "hoge.canvas",
-    "docs/kindle/野中-世界の大富豪2000人は知っている! 4つの自由で「成幸」を手にする方法 impress QuickBooks.md",
-    "docs/kindle/生形大-お金をふやす８つの習慣―――外資系金融マンが教える本当のお金の知識.md",
-    "docs/kindle/武志-株を買うなら最低限知っておきたい ファンダメンタル投資の教科書　改訂版.md",
-    "docs/kindle/片山晃、小松原周-【旧版】勝つ投資　負けない投資.md",
-    "docs/kindle/本田進一郎-有機農業と未来.md",
-    "docs/kindle/泰之-農業で稼ぐ！ 経済学.md",
-    "docs/kindle/高田晃一-２万２０００人超を導いた就活コンサルタントが教える これだけ！内定.md",
-    "docs/kindle/春彦-超訳ニーチェの言葉.md",
-    "docs/kindle/志生-Clean Code　アジャイルソフトウェア達人の技.md",
-    "docs/kindle",
-    "docs/programing/CS",
-    "無題のファイル.base",
-    "無題のファイル.canvas",
+    "ctf/reverse/picoCTF/vault-door-training/VaultDoorTraining.java",
+    "ctf/reverse/picoCTF/vault-door-training/vault-door-training-Writeup.md",
+    "ctf/reverse/picoCTF/vault-door-training",
+    "ctf/reverse/picoCTF/Transformation/Transformation-Writeup.md",
+    "ctf/reverse/picoCTF/Transformation/enc",
+    "ctf/reverse/picoCTF/Transformation/decode.py",
+    "ctf/reverse/picoCTF/Transformation",
+    "competitive/atcoder/ABC/426/B_The_Odd_One_Out.rs",
+    "competitive/atcoder/ABC/426/A_OS_Versions.rs",
+    "competitive/atcoder/ABC/426",
+    "docs/cs/6_システム分野/OS/unix/command/xxd.md",
+    "ctf/misc/picoCTF/mus1c/mus1c-Writeup.md",
+    "ctf/misc/picoCTF/mus1c/lyrics.txt",
+    "ctf/misc/picoCTF/mus1c",
+    "ctf/misc/picoCTF/Based/Based-Writeup.md",
+    "ctf/misc/picoCTF/Based",
+    "docs/cs/6_システム分野/OS/unix/command/strings.md",
+    "docs/cs/6_システム分野/OS/unix/command/cat.md",
+    "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）レジスタ.md",
+    "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）.md",
+    "docs/cs/5_理論分野/アルゴリズム/DP.md",
+    "docs/linux/command/man.md",
+    "ctf/misc/picoCTF/1_wanna_b3_a_r0ck5tar/1_wanna_b3_a_r0ck5tar-Writeup.md",
+    "ctf/misc/picoCTF/PW_Crack_3/PW_Crack_3-Writeup.md",
     "無題のファイル.md",
-    "ctf/misc/picoCTF/Binary_Search/writeup.md",
-    "docs/radare2.md",
-    "docs/programing/四則演算.md",
-    "docs/programing/Set_HashSet.md",
-    "docs/programing/List.md",
-    "docs/programing",
-    "docs/linux/command",
-    "docs/linux",
-    "ctf/misc/picoCTF/fixme1.py/fixme1.py",
-    "ctf/misc/picoCTF/fixme1.py"
+    "ctf/misc/picoCTF/binhexa/binhexa-Writeup.md",
+    "ctf/misc/picoCTF/Binary_Search/Binary_Search-Writeup.md",
+    "competitive/atcoder/ABC/405/ABC405-Writeup.md",
+    "competitive/atcoder/ABC/404/ABC404-Writeup.md",
+    "competitive/atcoder/ABC/403/ABC403-Writeup.md",
+    "competitive/atcoder/ABC/402/ABC402-Writeup.md",
+    "competitive/atcoder/ABC/401/ABC401-Writeup.md",
+    "ctf/misc/picoCTF/PW_Crack_5/PW_Crack_5-Writeup.md",
+    "competitive/atcoder/ABC/431/ABC431-Writeup.md",
+    "ctf/misc/picoCTF/Serpentine/Serpentine-Writeup.md",
+    "docs/cs/6_システム分野/OS/unix/command/tr.md",
+    "無題のファイル.canvas",
+    "無題のファイル 1.canvas",
+    "hoge.canvas"
   ]
 }

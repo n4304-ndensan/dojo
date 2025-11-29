@@ -31,6 +31,10 @@ __pycache__/
 dist/
 build/
 
+# .NET
+bin/
+obj/
+
 # Virtual environments
 .env
 .venv
@@ -64,9 +68,15 @@ Desktop.ini
 # VSCode
 .vscode/
 
+# Visual Studio
+.vs/
+
 # ========================================
 # Others
 # ========================================
 # Local notes / scratch files (optional)
 scratch/
 notes_local/
+
+# 仮想化関連
+.vagrant/

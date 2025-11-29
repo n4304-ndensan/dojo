@@ -1,0 +1,19 @@
+@page "/income-tax/quick"
+@using LayeredArchitecture.Models
+
+<h3>クイック試算</h3>
+
+<div class="form">
+    <label>給与収入</label>
+    <input type="number" @bind="_input.Salary" />
+    <label>社会保険料</label>
+    <input type="number" @bind="_input.SocialInsurance" />
+    <label>扶養家族数</label>
+    <input type="number" @bind="_input.Dependants" />
+    <button @onclick="OnCalculateAsync">試算する</button>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(_message))
+{
+    <p>@_message</p>
+}
