@@ -1,0 +1,74 @@
+@page "/dashboard"
+@using LayeredArchitecture.Models
+
+<h3>税務ダッシュボード</h3>
+
+@if (_loading)
+{
+    <p>読み込み中...</p>
+}
+else
+{
+    <section class="card p-3 mb-3">
+        <h5>クイック計算</h5>
+        <div class="row g-2">
+            <div class="col-sm-3">
+                <label>給与収入</label>
+                <input type="number" class="form-control" @bind="_input.Salary" />
+            </div>
+            <div class="col-sm-3">
+                <label>社会保険料</label>
+                <input type="number" class="form-control" @bind="_input.SocialInsurance" />
+            </div>
+            <div class="col-sm-2">
+                <label>扶養家族</label>
+                <input type="number" class="form-control" @bind="_input.Dependants" />
+            </div>
+            <div class="col-sm-3">
+                <label>追加控除</label>
+                <input type="number" class="form-control" @bind="_input.AdditionalDeductions" />
+            </div>
+            <div class="col-sm-1 d-flex align-items-end">
+                <button class="btn btn-primary w-100" @onclick="OnQuickCalcAsync">計算</button>
+            </div>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(_message))
+        {
+            <p class="mt-2">@_message</p>
+        }
+    </section>
+
+    <section class="card p-3 mb-3">
+        <h5>最新結果</h5>
+        @if (_snapshot?.LatestResult is null)
+        {
+            <p>まだ計算結果がありません。</p>
+        }
+        else
+        {
+            <p>課税所得: @_snapshot.LatestResult.TaxableIncome / 税額: @_snapshot.LatestResult.TaxAmount / 税率: @_snapshot.LatestResult.TaxRate</p>
+        }
+    </section>
+
+    <section class="card p-3 mb-3">
+        <h5>控除設定</h5>
+        <p>基礎控除: @_snapshot?.Setting.BasicDeduction / 扶養控除: @_snapshot?.Setting.DependantDeduction</p>
+    </section>
+
+    <section class="card p-3 mb-3">
+        <h5>履歴</h5>
+        @if (_snapshot?.Histories is null || !_snapshot.Histories.Any())
+        {
+            <p>履歴なし</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var h in _snapshot.Histories.Take(5))
+                {
+                    <li>@ControlHistory.Describe(h)</li>
+                }
+            </ul>
+        }
+    </section>
+}

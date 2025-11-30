@@ -1,0 +1,18 @@
+@page "/income-tax/history"
+@using LayeredArchitecture.Models
+
+<h3>計算履歴</h3>
+
+@if (_histories is null || !_histories.Any())
+{
+    <p>まだ履歴はありません。</p>
+}
+else
+{
+    <ul>
+        @foreach (var history in _histories)
+        {
+            <li>@Control.Describe(history)</li>
+        }
+    </ul>
+}

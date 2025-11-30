@@ -1,0 +1,22 @@
+@page "/income-tax/deductions"
+@using LayeredArchitecture.Models
+
+<h3>控除設定</h3>
+
+<div class="form">
+    <label>基礎控除</label>
+    <input type="number" @bind="_setting.BasicDeduction" />
+
+    <label>扶養1人あたり控除</label>
+    <input type="number" @bind="_setting.DependantDeduction" />
+
+    <label>社会保険料率</label>
+    <input type="number" @bind="_setting.SocialInsuranceRate" />
+
+    <button @onclick="OnSaveAsync">保存</button>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(_message))
+{
+    <p>@_message</p>
+}
