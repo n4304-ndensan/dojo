@@ -1,0 +1,20 @@
+@page "/income-tax/result"
+@using LayeredArchitecture.Models
+
+<h3>所得税計算 - 結果</h3>
+
+@if (_result is null)
+{
+    <p>計算結果がまだありません。</p>
+}
+else
+{
+    <p>@_summary</p>
+    <div>
+        <div>課税所得: @_result.TaxableIncome</div>
+        <div>税率: @_result.TaxRate</div>
+        <div>税額: @_result.TaxAmount</div>
+    </div>
+}
+
+<a href="/income-tax">入力に戻る</a> | <a href="/income-tax/history">履歴を表示</a>
