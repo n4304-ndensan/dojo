@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "playground/dotnet/LayeredArchitecture/README.md",
+                "file": "docs/cs/Computer Science; CS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Computer Science; CS"
             }
           }
         ],
@@ -184,8 +184,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "52ef83a8d890c96d",
+  "active": "20df606c7e247dc3",
   "lastOpenFiles": [
+    "docs/cs/7_応用分野",
+    "docs/cs/5_理論分野/理論分野.md",
     "ctf/reverse/picoCTF/vault-door-training/VaultDoorTraining.java",
     "ctf/reverse/picoCTF/vault-door-training/vault-door-training-Writeup.md",
     "ctf/reverse/picoCTF/vault-door-training",
@@ -201,7 +203,6 @@
     "ctf/misc/picoCTF/mus1c/lyrics.txt",
     "ctf/misc/picoCTF/mus1c",
     "ctf/misc/picoCTF/Based/Based-Writeup.md",
-    "ctf/misc/picoCTF/Based",
     "docs/cs/6_システム分野/OS/unix/command/strings.md",
     "docs/cs/6_システム分野/OS/unix/command/cat.md",
     "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）レジスタ.md",
@@ -221,7 +222,6 @@
     "ctf/misc/picoCTF/PW_Crack_5/PW_Crack_5-Writeup.md",
     "competitive/atcoder/ABC/431/ABC431-Writeup.md",
     "ctf/misc/picoCTF/Serpentine/Serpentine-Writeup.md",
-    "docs/cs/6_システム分野/OS/unix/command/tr.md",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
