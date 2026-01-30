@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DllImportSearchFromCurrentDirectoryTests": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
