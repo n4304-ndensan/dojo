@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "106a7039f8e9d73f",
+            "id": "88db83c063c5afad",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/cs/6_システム分野/ネットワーク/DNS.md",
+                "file": "docs/tech_notes/dotnet/DotNET 複数プロジェクトの依存関係.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DNS"
+              "title": "DotNET 複数プロジェクトの依存関係"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Heap",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -169,44 +169,45 @@
       "bases:Create new base": false
     }
   },
-  "active": "106a7039f8e9d73f",
+  "active": "88db83c063c5afad",
   "lastOpenFiles": [
+    "docs/tech_notes/dotnet/DotNETメモリ配置.md",
+    "docs/tech_notes/linux/kernel/netdev.md",
     "docs/tech_notes/linux/kernel/mhi.md",
-    "docs/tech_notes/linux/kernel/pci_generic.md",
     "docs/tech_notes/linux/kernel/bus.md",
+    "docs/tech_notes/linux/command/man.md",
+    "docs/tech_notes/dotnet/DotNET 複数プロジェクトの依存関係.md",
+    "docs/tech_notes/CSharp/依存性注入（DI）ガイド.md",
+    "docs/tech_notes/無題のファイル.md",
+    "docs/tech_notes/dotnet",
+    "docs/cs/6_システム分野/OS/Memory.md",
+    "docs/tech_notes/container/docker/docker.md",
+    "docs/tech_notes/container/docker/docker_for_windows.md",
+    "docs/tech_notes/container/docker/tech_notes-container-docker-用語集.md",
+    "docs/tech_notes/container/podman/tech_notes-container-podman-用語集.md",
+    "docs/tech_notes/container/docker",
+    "docs/tech_notes/container/podman/podman_トラブルシューティング.md",
+    "playground/windows/wsl/2026.02.03_Podman-Machine起動失敗.md",
+    "docs/tech_notes/container/podman",
+    "docs/tech_notes/container",
+    "docs/cs/6_システム分野/ネットワーク/DNS.md",
+    "playground/windows/wsl",
+    "playground/windows",
+    "docs/tech_notes/linux/kernel/pci_generic.md",
     "docs/cs/Computer Science; CS.md",
     "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）レジスタ.md",
-    "docs/cs/6_システム分野/ネットワーク/DNS.md",
     "docs/cs/6_システム分野/ネットワーク/ネットワーク目次.md",
     "assets/img/DNSによる名前解決のイメージ.png",
     "assets/img",
     "assets",
-    "docs/tech_notes/linux/kernel/netdev.md",
     "docs/tech_notes/linux/kernel",
     "docs/cs/7_応用分野",
     "docs/cs/5_理論分野/理論分野.md",
-    "ctf/reverse/picoCTF/vault-door-training/VaultDoorTraining.java",
     "ctf/reverse/picoCTF/vault-door-training/vault-door-training-Writeup.md",
-    "ctf/reverse/picoCTF/vault-door-training",
     "ctf/reverse/picoCTF/Transformation/Transformation-Writeup.md",
-    "ctf/reverse/picoCTF/Transformation/enc",
-    "ctf/reverse/picoCTF/Transformation/decode.py",
-    "ctf/reverse/picoCTF/Transformation",
-    "competitive/atcoder/ABC/426/B_The_Odd_One_Out.rs",
     "docs/cs/6_システム分野/OS/unix/command/xxd.md",
     "ctf/misc/picoCTF/mus1c/mus1c-Writeup.md",
     "ctf/misc/picoCTF/Based/Based-Writeup.md",
-    "docs/cs/6_システム分野/OS/unix/command/strings.md",
-    "docs/cs/6_システム分野/OS/unix/command/cat.md",
-    "docs/cs/6_システム分野/プログラミング言語・コンパイラ/アセンブリ言語（x86-64）.md",
-    "docs/cs/5_理論分野/アルゴリズム/DP.md",
-    "docs/linux/command/man.md",
-    "ctf/misc/picoCTF/1_wanna_b3_a_r0ck5tar/1_wanna_b3_a_r0ck5tar-Writeup.md",
-    "ctf/misc/picoCTF/PW_Crack_3/PW_Crack_3-Writeup.md",
-    "ctf/misc/picoCTF/binhexa/binhexa-Writeup.md",
-    "ctf/misc/picoCTF/Binary_Search/Binary_Search-Writeup.md",
-    "competitive/atcoder/ABC/405/ABC405-Writeup.md",
-    "competitive/atcoder/ABC/404/ABC404-Writeup.md",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
