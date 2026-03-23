@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/tech_notes/microsoft/azure/az305/Azure Standard Internal Load Balancer によるアプリケーション層のロードバランシング.md",
+                "file": "docs/tech_notes/microsoft/SQLServer/XE_SQLイベント_比較.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Azure Standard Internal Load Balancer によるアプリケーション層のロードバランシング"
+              "title": "XE_SQLイベント_比較"
             }
           }
         ],
@@ -200,8 +200,17 @@
   },
   "active": "b108a6a7205a40ee",
   "lastOpenFiles": [
-    "docs/tech_notes/microsoft/azure/az305/Azure DevOps Pipeline を利用した AKS への継続的デプロイ（ACR イメージ更新トリガー）.md",
+    "playground/github/copilot/sdk/uv.lock",
+    "playground/github/copilot/sdk/README.md",
+    "playground/github/copilot/sdk/pyproject.toml",
+    "playground/github/copilot/sdk/main.py",
+    "playground/github/copilot/sdk",
+    "playground/github/copilot",
+    "playground/github",
     "docs/tech_notes/microsoft/azure/az305/Azure Standard Internal Load Balancer によるアプリケーション層のロードバランシング.md",
+    "docs/tech_notes/microsoft/SQLServer/XE_SQLイベント_比較.md",
+    "docs/tech_notes/microsoft/SQLServer",
+    "docs/tech_notes/microsoft/azure/az305/Azure DevOps Pipeline を利用した AKS への継続的デプロイ（ACR イメージ更新トリガー）.md",
     "docs/tech_notes/microsoft/azure/az305/Azure 仮想マシンの高可用性とパフォーマンスアーキテクチャ.md",
     "docs/tech_notes/microsoft/azure/az305/Azure Backup とハイブリッドバックアップアーキテクチャ.md",
     "docs/tech_notes/microsoft/azure/az305/AKS における Azure リソース認証アーキテクチャ.md",
@@ -227,15 +236,6 @@
     "docs/tech_notes/win/smb/password付きUNCPath作成方法.md",
     "docs/tech_notes/win/ftp",
     "README.md",
-    "docs/tech_notes/CSharp/CS_class_struct_record_record-struct の違いまとめ.md",
-    "無題のフォルダ 1",
-    "docs/tech_notes/win/smb",
-    "無題のフォルダ",
-    "docs/tech_notes/win",
-    "docs/tech_notes/CSharp/CS_struct_struct-record違い.md",
-    "docs/tech_notes/dotnet/DotNET 複数プロジェクトの依存関係.md",
-    "docs/tech_notes/dotnet",
-    "docs/tech_notes/container/docker",
     "assets/img/DNSによる名前解決のイメージ.png",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
