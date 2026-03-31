@@ -1,0 +1,19 @@
+[project]
+name = "lab-openpyxl"
+version = "0.1.0"
+description = "openpyxl learning project for understanding workbook creation, formatting, saving, and loading."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "openpyxl>=3.1.0,<4.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0,<9.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
