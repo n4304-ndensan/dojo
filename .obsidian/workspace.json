@@ -8,49 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "88db83c063c5afad",
+            "id": "cf687b307f6d6ca8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/tech_notes/win/ftp/FTPサーバ構築手順書（Windows_IIS）.md",
+                "file": "docs/tech_notes/microsoft/azure/az305/Topic-04-Compute.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "FTPサーバ構築手順書（Windows_IIS）"
-            }
-          },
-          {
-            "id": "bae08f1e3089b969",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/tech_notes/microsoft/azure/az305/AKS における Azure リソース認証アーキテクチャ.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "AKS における Azure リソース認証アーキテクチャ"
-            }
-          },
-          {
-            "id": "b108a6a7205a40ee",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/tech_notes/microsoft/SQLServer/XE_SQLイベント_比較.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "XE_SQLイベント_比較"
+              "title": "Topic-04-Compute"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -82,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Heap",
+                "query": "プロキシ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -107,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 279.5
+    "width": 200
   },
   "right": {
     "id": "e1f2f631dfb9fd48",
@@ -198,45 +169,50 @@
       "command-palette:コマンドパレットを開く": false
     }
   },
-  "active": "b108a6a7205a40ee",
+  "active": "20df606c7e247dc3",
   "lastOpenFiles": [
-    "playground/github/copilot/sdk/uv.lock",
-    "playground/github/copilot/sdk/README.md",
-    "playground/github/copilot/sdk/pyproject.toml",
-    "playground/github/copilot/sdk/main.py",
-    "playground/github/copilot/sdk",
-    "playground/github/copilot",
-    "playground/github",
-    "docs/tech_notes/microsoft/azure/az305/Azure Standard Internal Load Balancer によるアプリケーション層のロードバランシング.md",
-    "docs/tech_notes/microsoft/SQLServer/XE_SQLイベント_比較.md",
-    "docs/tech_notes/microsoft/SQLServer",
-    "docs/tech_notes/microsoft/azure/az305/Azure DevOps Pipeline を利用した AKS への継続的デプロイ（ACR イメージ更新トリガー）.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure 仮想マシンの高可用性とパフォーマンスアーキテクチャ.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure Backup とハイブリッドバックアップアーキテクチャ.md",
-    "docs/tech_notes/microsoft/azure/az305/AKS における Azure リソース認証アーキテクチャ.md",
-    "docs/tech_notes/microsoft/azure/az305/Microsoft Entra ID を利用した Azure Web アプリケーション認証アーキテクチャ.md",
-    "docs/tech_notes/microsoft/azure/az305/Microsoft Entra ID ハイブリッド認証方式ドキュメント.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure イベント駆動オートメーション.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure SQL Server 高可用性アーキテクチャ.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure SQL Database 購入モデル設計ドキュメント.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure Recovery Services Vault 技術ドキュメント.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure Monitor _ Application Monitoring アーキテクチャ.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure Key Vault 技術ドキュメント.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure Identity Governance ドキュメント.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure Cosmos DB API ドキュメント.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure Container Registry SKU 比較ドキュメント.md",
-    "docs/tech_notes/microsoft/azure/az305/Azure データエンジニアリングアーキテクチャ.md",
-    "docs/tech_notes/microsoft/azure/az305/グローバル負荷分散アーキテクチャ.md",
-    "docs/tech_notes/progress.md",
-    "docs/tech_notes/LaTeX.md",
-    "docs/tech_notes/microsoft/azure/az305",
-    "docs/tech_notes/win/ftp/FTPサーバ構築手順書（Windows_IIS）.md",
-    "docs/tech_notes/microsoft",
-    "docs/tech_notes/microsoft/azure",
-    "docs/tech_notes/win/smb/password付きUNCPath作成方法.md",
-    "docs/tech_notes/win/ftp",
-    "README.md",
-    "assets/img/DNSによる名前解決のイメージ.png",
+    "docs/tech_notes/microsoft/azure/Azure_solutions_Architect_Expert_AZ-305-Practice_Test_6.csv",
+    "docs/tech_notes/microsoft/azure/(.csv",
+    "docs/tech_notes/microsoft/azure/81F08300",
+    "docs/tech_notes/microsoft/azure/Azure_solutions_Architect_Expert_AZ-305-Practice_Test_5.csv",
+    "docs/tech_notes/microsoft/azure/Azure_solutions_Architect_Expert_AZ-305-Practice_Test_6 - コピー.csv",
+    "docs/tech_notes/microsoft/azure/FBA26300",
+    "docs/tech_notes/microsoft/azure/Azure_solutions_Architect_Expert_AZ-305-Practice_Test_4 - コピー.csv",
+    "docs/tech_notes/microsoft/azure/5FAC6000",
+    "docs/tech_notes/microsoft/azure/BBF96000",
+    "docs/tech_notes/microsoft/azure/Azure_solutions_Architect_Expert_AZ-305-Practice_Test_4.csv",
+    "docs/tech_notes/microsoft/azure/CS_1_BlueRock_AZ305_JP_translation.pdf",
+    "docs/tech_notes/microsoft/azure/az305/Topic-05-Storage.md",
+    "docs/tech_notes/microsoft/azure/az305/Topic-06-Database.md",
+    "docs/tech_notes/microsoft/azure/az305/Topic-07-Integration.md",
+    "docs/tech_notes/microsoft/azure/az305/Topic-09-Monitoring.md",
+    "docs/tech_notes/microsoft/azure/az305/Topic-08-Analytics.md",
+    "docs/tech_notes/microsoft/azure/az305/Topic-04-Compute.md",
+    "docs/tech_notes/microsoft/azure/az305/Topic-02-Governance.md",
+    "docs/tech_notes/microsoft/azure/az305/Topic-01-Identity.md",
+    "docs/tech_notes/microsoft/azure/az305/Scenarios/Scenario-KeyVault.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/Azure Entra ID におけるシングルサインオン方式.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/Topic-01.md",
+    "docs/tech_notes/microsoft/azure/az305/Azure用語集.md",
+    "docs/tech_notes/microsoft/azure/az305/プロンプト.md",
+    "docs/tech_notes/microsoft/azure/az305/ドキュメント整理作業記録.md",
+    "docs/tech_notes/microsoft/azure/az305/Azure App Service HTTPS 構成設計.md",
+    "docs/tech_notes/microsoft/azure/az305/Azure App Service Environment と Application Gateway による高可用 Web アーキテクチャ.md",
+    "docs/tech_notes/microsoft/azure/az305/SourceIndex.md",
+    "docs/tech_notes/microsoft/azure/az305/Azure Policy による VM 作成制限のガバナンス設計.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/無題のファイル.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/複数リージョンの Web アプリケーションにおけるグローバル負荷分散（Azure Front Door）.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/大規模ログ分析に適した Azure サービス（Azure Data Explorer）.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/大規模 SQL Server データベースを最小ダウンタイムで Azure に移行する設計.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/高可用性マルチリージョンWebアプリケーション向けAzureサービス選択.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/高可用性ステートレスWebアプリのAzure設計.md",
+    "docs/tech_notes/microsoft/azure/az305/Sources/高可用性eコマースプラットフォーム向けAzureサービス選択.md",
+    "playground/dotnet/Architecture/LayeredArchitecture/LayeredArchitecture.Web/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
+    "playground/dotnet/Architecture/LayeredArchitecture/LayeredArchitecture.Web/wwwroot/favicon.png",
+    "playground/dotnet/Architecture/LayeredArchitecture/LayeredArchitecture.View/wwwroot/background.png",
+    "playground/dotnet/LayeredArchitecture/LayeredArchitecture.Web/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
+    "playground/dotnet/LayeredArchitecture/LayeredArchitecture.Web/wwwroot/favicon.png",
+    "playground/dotnet/LayeredArchitecture/LayeredArchitecture.View/wwwroot/background.png",
     "無題のファイル.canvas",
     "無題のファイル 1.canvas",
     "hoge.canvas"
