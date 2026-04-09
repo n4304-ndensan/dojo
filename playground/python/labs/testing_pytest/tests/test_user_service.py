@@ -8,7 +8,7 @@ fixture を利用した共通テストデータの再利用を学びます。
 実務に近い見え方になります。
 """
 
-from app.user_service import User, is_adult
+from src.app.user_service import User, is_adult
 
 
 

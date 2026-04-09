@@ -12,7 +12,7 @@ test_calculator.py
 
 import pytest
 
-from app.calculator import add, divide
+from src.app.calculator import add, divide
 
 
 

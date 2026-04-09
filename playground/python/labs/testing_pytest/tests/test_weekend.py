@@ -11,7 +11,7 @@ test_weekend.py
 
 import pytest
 
-from app.weekend import is_weekend
+from src.app.weekend import is_weekend
 
 
 @pytest.mark.parametrize(
