@@ -1,0 +1,17 @@
+ubuntu_dev_neovim_supported_architectures:
+  - x86_64
+
+ubuntu_dev_neovim_arch_map:
+  x86_64: x86_64
+
+ubuntu_dev_neovim_deb_arch: "{{ ubuntu_dev_neovim_arch_map[ansible_architecture] | default('x86_64') }}"
+ubuntu_dev_neovim_deb_url: "https://github.com/neovim/neovim-releases/releases/download/v{{ ubuntu_dev_neovim_version }}/nvim-linux-{{ ubuntu_dev_neovim_deb_arch }}.deb"
+ubuntu_dev_neovim_deb_path: "{{ ubuntu_dev_download_dir }}/nvim-linux-{{ ubuntu_dev_neovim_deb_arch }}-v{{ ubuntu_dev_neovim_version }}.deb"
+
+ubuntu_dev_uv_installer_url: https://astral.sh/uv/install.sh
+ubuntu_dev_rustup_installer_url: https://sh.rustup.rs
+
+ubuntu_dev_neovim_config_dir: "{{ ubuntu_dev_config_home }}/nvim"
+ubuntu_dev_neovim_env:
+  HOME: "{{ ubuntu_dev_home }}"
+  PATH: "{{ ubuntu_dev_local_bin }}:{{ ubuntu_dev_home }}/.cargo/bin:{{ ubuntu_dev_home }}/.dotnet/tools:{{ ansible_env.PATH }}"

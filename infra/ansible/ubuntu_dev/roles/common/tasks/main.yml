@@ -1,0 +1,35 @@
+- name: Install common Ubuntu packages
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 86400
+    name: "{{ ubuntu_dev_base_packages + ubuntu_dev_shell_packages }}"
+    state: present
+
+- name: Ensure user workspace directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ ubuntu_dev_home }}/.cache"
+    - "{{ ubuntu_dev_download_dir }}"
+    - "{{ ubuntu_dev_local_bin }}"
+    - "{{ ubuntu_dev_config_home }}"
+    - "{{ ubuntu_dev_home }}/.local/share"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Check whether fdfind exists
+  ansible.builtin.stat:
+    path: /usr/bin/fdfind
+  register: ubuntu_dev_fdfind
+
+- name: Ensure fd shim exists
+  ansible.builtin.file:
+    src: /usr/bin/fdfind
+    dest: "{{ ubuntu_dev_local_bin }}/fd"
+    state: link
+    force: true
+  when: ubuntu_dev_fdfind.stat.exists
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"

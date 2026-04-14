@@ -1,0 +1,470 @@
+zsh 設定の最適解
+========================================================================
+
+metric.txt の zprof 結果では、重い箇所は主に次の 2 つです。
+
+- `zsh-syntax-highlighting`:
+  `_zsh_highlight_main__type` が 76.41% を占めており、入力中の再描画コストの大半を使っている
+- `zsh-autosuggestions`:
+  `_zsh_autosuggest_bind_widgets` / `_zsh_autosuggest_bind_widget` が widget の再バインドでコストを使っている
+
+この結果からの最適解は、`zsh-syntax-highlighting` を無理に遅延ロードすることではなく、
+長い入力時だけ処理を止めつつ、`zsh-autosuggestions` の自動再バインドを止めることです。
+
+推奨設定:
+
+```zsh
+# zsh-autosuggestions:
+# precmd ごとの自動再バインドを止め、ロード後に 1 回だけ bind する
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# 長い貼り付け時は suggestion を止める
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
+zinit ice wait lucid atload'_zsh_autosuggest_bind_widgets'
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
+zinit light zsh-users/zsh-completions
+
+zinit light zsh-users/zsh-history-substring-search
+
+# compinit / bindkey / fzf / zoxide などの widget 定義はここ
+
+# zsh-syntax-highlighting:
+# 長いコマンドや貼り付けではハイライトを打ち切る
+ZSH_HIGHLIGHT_MAXLENGTH=200
+zinit light zsh-users/zsh-syntax-highlighting
+```
+
+補足:
+
+- `ZSH_AUTOSUGGEST_MANUAL_REBIND=1` を使う場合、起動後に追加で widget を定義したら
+  `_zsh_autosuggest_bind_widgets` をもう一度呼ぶ
+- `ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20` は `zsh-autosuggestions` の公式 README で推奨されている値
+- `ZSH_HIGHLIGHT_MAXLENGTH=200` は `zsh-syntax-highlighting` 側で 200 文字超のバッファを
+  ハイライトしないため、長い 1 行コマンドや大量貼り付けでの引っ掛かりを抑えやすい
+- `zsh-syntax-highlighting` は引き続き `.zshrc` の後半、他の widget 定義の後に置く
+
+以下は元の raw zprof 出力です。
+
+num  calls                time                       self            name
+-----------------------------------------------------------------------------------
+ 1)   47         499.24    10.62   76.41%    499.24    10.62   76.41%  _zsh_highlight_main__type
+ 2)   15          36.92     2.46    5.65%     36.70     2.45    5.62%  _zsh_highlight_main_highlighter_check_path
+ 3)    3          31.25    10.42    4.78%     17.07     5.69    2.61%  _zsh_autosuggest_bind_widgets
+ 4)  597          14.18     0.02    2.17%     14.18     0.02    2.17%  _zsh_autosuggest_bind_widget
+ 5)   64          13.64     0.21    2.09%     13.64     0.21    2.09%  (anon) [:2472]
+ 6)   18          14.10     0.78    2.16%     10.78     0.60    1.65%  _zsh_autosuggest_async_request
+ 7)   25         567.44    22.70   86.85%     10.20     0.41    1.56%  _zsh_highlight
+ 8)   23         549.24    23.88   84.06%      8.71     0.38    1.33%  _zsh_highlight_main_highlighter_highlight_list
+ 9)   64          21.28     0.33    3.26%      7.64     0.12    1.17%  @zinit-scheduler
+10)   23         556.46    24.19   85.17%      3.47     0.15    0.53%  _zsh_highlight_highlighter_main_paint
+11)   18           3.33     0.18    0.51%      3.33     0.18    0.51%  is-at-least
+12)   20          22.74     1.14    3.48%      2.65     0.13    0.41%  _zsh_autosuggest_widget_modify
+13)   48           2.55     0.05    0.39%      2.55     0.05    0.39%  _zsh_highlight_main_calculate_fallback
+14)   20          19.25     0.96    2.95%      2.47     0.12    0.38%  _zsh_autosuggest_modify
+15)   23         566.75    24.64   86.74%      2.30     0.10    0.35%  azhw:zle-line-pre-redraw
+16)   18          24.35     1.35    3.73%      2.19     0.12    0.33%  _zsh_autosuggest_bound_1_self-insert
+17)   25           2.45     0.10    0.38%      1.74     0.07    0.27%  _zsh_autosuggest_invoke_original_widget
+18)   12          31.32     2.61    4.79%      1.26     0.10    0.19%  _zsh_highlight_main_highlighter_highlight_argument
+19)   16           2.56     0.16    0.39%      1.24     0.08    0.19%  _zsh_autosuggest_async_response
+20)   48           1.20     0.02    0.18%      1.20     0.02    0.18%  _zsh_highlight_add_highlight
+21)   49           0.89     0.02    0.14%      0.89     0.02    0.14%  _zsh_highlight_main_add_region_highlight
+22)   23         564.44    24.54   86.39%      0.87     0.04    0.13%  _zsh_highlight__zle-line-pre-redraw
+23)   16           1.32     0.08    0.20%      0.87     0.05    0.13%  _zsh_autosuggest_widget_suggest
+24)   35           0.84     0.02    0.13%      0.84     0.02    0.13%  _zsh_highlight_main_highlighter__try_expand_parameter
+25)   18          14.83     0.82    2.27%      0.73     0.04    0.11%  _zsh_autosuggest_fetch
+26)   41           0.69     0.02    0.11%      0.69     0.02    0.11%  _zsh_autosuggest_highlight_reset
+27)   41           0.63     0.02    0.10%      0.63     0.02    0.10%  _zsh_autosuggest_highlight_apply
+28)   38           0.60     0.02    0.09%      0.60     0.02    0.09%  _zsh_highlight_main_highlighter_expand_path
+29)   48           0.51     0.01    0.08%      0.51     0.01    0.08%  _zsh_highlight_main__is_redirection
+30)   18           0.46     0.03    0.07%      0.46     0.03    0.07%  _zsh_autosuggest_orig_self-insert
+31)    5           1.25     0.25    0.19%      0.46     0.09    0.07%  _zsh_autosuggest_widget_clear
+32)   25           0.66     0.03    0.10%      0.45     0.02    0.07%  _zsh_highlight_highlighter_main_predicate
+33)   12           0.53     0.04    0.08%      0.29     0.02    0.04%  _zsh_highlight_main_add_many_region_highlights
+34)    3          31.51    10.50    4.82%      0.26     0.09    0.04%  _zsh_autosuggest_start
+35)    2           4.82     2.41    0.74%      0.24     0.12    0.04%  azhw:zle-line-finish
+36)    3           0.21     0.07    0.03%      0.21     0.07    0.03%  _zsh_highlight_main__precmd_hook
+37)    3           0.21     0.07    0.03%      0.21     0.07    0.03%  zle-line-init
+38)   23           0.21     0.01    0.03%      0.21     0.01    0.03%  _zsh_highlight_buffer_modified
+39)   16           0.17     0.01    0.03%      0.17     0.01    0.03%  _zsh_autosuggest_suggest
+40)    3           0.14     0.05    0.02%      0.12     0.04    0.02%  prompt_starship_precmd
+41)   25           0.12     0.00    0.02%      0.12     0.00    0.02%  (anon) [:259]
+42)    2           0.12     0.06    0.02%      0.12     0.06    0.02%  zle-line-finish
+43)   12           0.11     0.01    0.02%      0.11     0.01    0.02%  _zsh_highlight_main__is_global_alias
+44)    5           0.59     0.12    0.09%      0.09     0.02    0.01%  _zsh_autosuggest_clear
+45)    2           0.60     0.30    0.09%      0.09     0.05    0.01%  _zsh_autosuggest_bound_1_accept-line
+46)    2           0.51     0.25    0.08%      0.07     0.03    0.01%  _zsh_autosuggest_bound_1_up-line-or-history
+47)    2           0.06     0.03    0.01%      0.06     0.03    0.01%  _zsh_autosuggest_orig_up-line-or-history
+48)    2           0.05     0.02    0.01%      0.05     0.02    0.01%  _zsh_autosuggest_orig_accept-line
+49)    2           3.91     1.95    0.60%      0.05     0.02    0.01%  (anon) [:416]
+50)    2           0.63     0.31    0.10%      0.04     0.02    0.01%  _zsh_autosuggest_bound_1_user:zle-line-finish
+51)    2           0.04     0.02    0.01%      0.04     0.02    0.01%  _zsh_highlight_main_highlighter_highlight_path_separators
+52)    2           3.95     1.97    0.60%      0.04     0.02    0.01%  _zsh_highlight__zle-line-finish
+53)    2           0.06     0.03    0.01%      0.04     0.02    0.01%  prompt_starship_preexec
+54)    4           0.04     0.01    0.01%      0.04     0.01    0.01%  __starship_get_time
+55)    1           0.33     0.33    0.05%      0.04     0.04    0.01%  _zsh_autosuggest_bound_1_down-line-or-history
+56)    3           0.03     0.01    0.01%      0.03     0.01    0.01%  _zsh_highlight_main_highlighter_check_assign
+57)    1           0.03     0.03    0.00%      0.03     0.03    0.00%  _zsh_autosuggest_orig_down-line-or-history
+58)    2           0.03     0.01    0.00%      0.03     0.01    0.00%  _zsh_highlight_preexec_hook
+59)    1           0.01     0.01    0.00%      0.01     0.01    0.00%  (anon) [:616]
+60)    1           0.01     0.01    0.00%      0.01     0.01    0.00%  _zsh_highlight_main__resolve_alias
+
+-----------------------------------------------------------------------------------
+
+      23/25      563.57    24.50   86.26%      9.32     0.41             _zsh_highlight__zle-line-pre-redraw [22]
+       2/25        3.86     1.93    0.59%      0.88     0.44             (anon) [:416] [49]
+ 7)   25         567.44    22.70   86.85%     10.20     0.41    1.56%  _zsh_highlight
+      25/25        0.12     0.00    0.02%      0.12     0.00             (anon) [:259] [41]
+      25/25        0.66     0.03    0.10%      0.45     0.02             _zsh_highlight_highlighter_main_predicate [32]
+      23/23      556.46    24.19   85.17%      3.47     0.15             _zsh_highlight_highlighter_main_paint [10]
+
+-----------------------------------------------------------------------------------
+
+15)   23         566.75    24.64   86.74%      2.30     0.10    0.35%  azhw:zle-line-pre-redraw
+      23/23      564.44    24.54   86.39%      0.87     0.04             _zsh_highlight__zle-line-pre-redraw [22]
+
+-----------------------------------------------------------------------------------
+
+      23/23      564.44    24.54   86.39%      0.87     0.04             azhw:zle-line-pre-redraw [15]
+22)   23         564.44    24.54   86.39%      0.87     0.04    0.13%  _zsh_highlight__zle-line-pre-redraw
+      23/25      563.57    24.50   86.26%      9.32     0.41             _zsh_highlight [7]
+
+-----------------------------------------------------------------------------------
+
+      23/23      556.46    24.19   85.17%      3.47     0.15             _zsh_highlight [7]
+10)   23         556.46    24.19   85.17%      3.47     0.15    0.53%  _zsh_highlight_highlighter_main_paint
+      48/48        1.20     0.02    0.18%      1.20     0.02             _zsh_highlight_add_highlight [20]
+      48/48        2.55     0.05    0.39%      2.55     0.05             _zsh_highlight_main_calculate_fallback [13]
+      23/23      549.24    23.88   84.06%      8.71     0.38             _zsh_highlight_main_highlighter_highlight_list [8]
+
+-----------------------------------------------------------------------------------
+
+      23/23      549.24    23.88   84.06%      8.71     0.38             _zsh_highlight_highlighter_main_paint [10]
+ 8)   23         549.24    23.88   84.06%      8.71     0.38    1.33%  _zsh_highlight_main_highlighter_highlight_list
+       1/1         0.01     0.01    0.00%      0.01     0.01             _zsh_highlight_main__resolve_alias [60]
+       1/1         0.01     0.01    0.00%      0.01     0.01             (anon) [:616] [59]
+       3/3         0.03     0.01    0.01%      0.03     0.01             _zsh_highlight_main_highlighter_check_assign [56]
+      12/12        0.11     0.01    0.02%      0.11     0.01             _zsh_highlight_main__is_global_alias [43]
+      23/38        0.38     0.02    0.06%      0.38     0.02             _zsh_highlight_main_highlighter_expand_path [28]
+      48/48        0.51     0.01    0.08%      0.51     0.01             _zsh_highlight_main__is_redirection [29]
+      37/49        0.65     0.02    0.10%      0.65     0.02             _zsh_highlight_main_add_region_highlight [21]
+      35/35        0.84     0.02    0.13%      0.84     0.02             _zsh_highlight_main_highlighter__try_expand_parameter [24]
+       3/15        7.43     2.48    1.14%      7.40     2.47             _zsh_highlight_main_highlighter_check_path [2]
+      12/12       31.32     2.61    4.79%      1.26     0.10             _zsh_highlight_main_highlighter_highlight_argument [18]
+      47/47      499.24    10.62   76.41%    499.24    10.62             _zsh_highlight_main__type [1]
+
+-----------------------------------------------------------------------------------
+
+      47/47      499.24    10.62   76.41%    499.24    10.62             _zsh_highlight_main_highlighter_highlight_list [8]
+ 1)   47         499.24    10.62   76.41%    499.24    10.62   76.41%  _zsh_highlight_main__type
+
+-----------------------------------------------------------------------------------
+
+      12/15       29.49     2.46    4.51%     29.30     2.44             _zsh_highlight_main_highlighter_highlight_argument [18]
+       3/15        7.43     2.48    1.14%      7.40     2.47             _zsh_highlight_main_highlighter_highlight_list [8]
+ 2)   15          36.92     2.46    5.65%     36.70     2.45    5.62%  _zsh_highlight_main_highlighter_check_path
+      15/38        0.22     0.01    0.03%      0.22     0.01             _zsh_highlight_main_highlighter_expand_path [28]
+
+-----------------------------------------------------------------------------------
+
+34)    3          31.51    10.50    4.82%      0.26     0.09    0.04%  _zsh_autosuggest_start
+       3/3        31.25    10.42    4.78%     17.07     5.69             _zsh_autosuggest_bind_widgets [3]
+
+-----------------------------------------------------------------------------------
+
+      12/12       31.32     2.61    4.79%      1.26     0.10             _zsh_highlight_main_highlighter_highlight_list [8]
+18)   12          31.32     2.61    4.79%      1.26     0.10    0.19%  _zsh_highlight_main_highlighter_highlight_argument
+       2/2         0.04     0.02    0.01%      0.04     0.02             _zsh_highlight_main_highlighter_highlight_path_separators [51]
+      12/12        0.53     0.04    0.08%      0.29     0.02             _zsh_highlight_main_add_many_region_highlights [33]
+      12/15       29.49     2.46    4.51%     29.30     2.44             _zsh_highlight_main_highlighter_check_path [2]
+
+-----------------------------------------------------------------------------------
+
+       3/3        31.25    10.42    4.78%     17.07     5.69             _zsh_autosuggest_start [34]
+ 3)    3          31.25    10.42    4.78%     17.07     5.69    2.61%  _zsh_autosuggest_bind_widgets
+     597/597      14.18     0.02    2.17%     14.18     0.02             _zsh_autosuggest_bind_widget [4]
+
+-----------------------------------------------------------------------------------
+
+16)   18          24.35     1.35    3.73%      2.19     0.12    0.33%  _zsh_autosuggest_bound_1_self-insert
+      18/20       22.16     1.23    3.39%      2.46     0.14             _zsh_autosuggest_widget_modify [12]
+
+-----------------------------------------------------------------------------------
+
+      18/20       22.16     1.23    3.39%      2.46     0.14             _zsh_autosuggest_bound_1_self-insert [16]
+       2/20        0.59     0.29    0.09%      0.19     0.09             _zsh_autosuggest_bound_1_user:zle-line-finish [50]
+12)   20          22.74     1.14    3.48%      2.65     0.13    0.41%  _zsh_autosuggest_widget_modify
+      20/41        0.40     0.02    0.06%      0.40     0.02             _zsh_autosuggest_highlight_apply [27]
+      20/41        0.44     0.02    0.07%      0.44     0.02             _zsh_autosuggest_highlight_reset [26]
+      20/20       19.25     0.96    2.95%      2.47     0.12             _zsh_autosuggest_modify [14]
+
+-----------------------------------------------------------------------------------
+
+ 9)   64          21.28     0.33    3.26%      7.64     0.12    1.17%  @zinit-scheduler
+      64/64       13.64     0.21    2.09%     13.64     0.21             (anon) [:2472] [5]
+
+-----------------------------------------------------------------------------------
+
+      20/20       19.25     0.96    2.95%      2.47     0.12             _zsh_autosuggest_widget_modify [12]
+14)   20          19.25     0.96    2.95%      2.47     0.12    0.38%  _zsh_autosuggest_modify
+      20/25        1.95     0.10    0.30%      1.38     0.07             _zsh_autosuggest_invoke_original_widget [17]
+      18/18       14.83     0.82    2.27%      0.73     0.04             _zsh_autosuggest_fetch [25]
+
+-----------------------------------------------------------------------------------
+
+      18/18       14.83     0.82    2.27%      0.73     0.04             _zsh_autosuggest_modify [14]
+25)   18          14.83     0.82    2.27%      0.73     0.04    0.11%  _zsh_autosuggest_fetch
+      18/18       14.10     0.78    2.16%     10.78     0.60             _zsh_autosuggest_async_request [6]
+
+-----------------------------------------------------------------------------------
+
+     597/597      14.18     0.02    2.17%     14.18     0.02             _zsh_autosuggest_bind_widgets [3]
+ 4)  597          14.18     0.02    2.17%     14.18     0.02    2.17%  _zsh_autosuggest_bind_widget
+
+-----------------------------------------------------------------------------------
+
+      18/18       14.10     0.78    2.16%     10.78     0.60             _zsh_autosuggest_fetch [25]
+ 6)   18          14.10     0.78    2.16%     10.78     0.60    1.65%  _zsh_autosuggest_async_request
+      18/18        3.33     0.18    0.51%      3.33     0.18             is-at-least [11]
+
+-----------------------------------------------------------------------------------
+
+      64/64       13.64     0.21    2.09%     13.64     0.21             @zinit-scheduler [9]
+ 5)   64          13.64     0.21    2.09%     13.64     0.21    2.09%  (anon) [:2472]
+
+-----------------------------------------------------------------------------------
+
+35)    2           4.82     2.41    0.74%      0.24     0.12    0.04%  azhw:zle-line-finish
+       2/2         0.63     0.31    0.10%      0.04     0.02             _zsh_autosuggest_bound_1_user:zle-line-finish [50]
+       2/2         3.95     1.97    0.60%      0.04     0.02             _zsh_highlight__zle-line-finish [52]
+
+-----------------------------------------------------------------------------------
+
+       2/2         3.95     1.97    0.60%      0.04     0.02             azhw:zle-line-finish [35]
+52)    2           3.95     1.97    0.60%      0.04     0.02    0.01%  _zsh_highlight__zle-line-finish
+       2/2         3.91     1.95    0.60%      0.05     0.02             (anon) [:416] [49]
+
+-----------------------------------------------------------------------------------
+
+       2/2         3.91     1.95    0.60%      0.05     0.02             _zsh_highlight__zle-line-finish [52]
+49)    2           3.91     1.95    0.60%      0.05     0.02    0.01%  (anon) [:416]
+       2/25        3.86     1.93    0.59%      0.88     0.44             _zsh_highlight [7]
+
+-----------------------------------------------------------------------------------
+
+      18/18        3.33     0.18    0.51%      3.33     0.18             _zsh_autosuggest_async_request [6]
+11)   18           3.33     0.18    0.51%      3.33     0.18    0.51%  is-at-least
+
+-----------------------------------------------------------------------------------
+
+19)   16           2.56     0.16    0.39%      1.24     0.08    0.19%  _zsh_autosuggest_async_response
+      16/16        1.32     0.08    0.20%      0.87     0.05             _zsh_autosuggest_widget_suggest [23]
+
+-----------------------------------------------------------------------------------
+
+      48/48        2.55     0.05    0.39%      2.55     0.05             _zsh_highlight_highlighter_main_paint [10]
+13)   48           2.55     0.05    0.39%      2.55     0.05    0.39%  _zsh_highlight_main_calculate_fallback
+
+-----------------------------------------------------------------------------------
+
+      20/25        1.95     0.10    0.30%      1.38     0.07             _zsh_autosuggest_modify [14]
+       5/25        0.50     0.10    0.08%      0.37     0.07             _zsh_autosuggest_clear [44]
+17)   25           2.45     0.10    0.38%      1.74     0.07    0.27%  _zsh_autosuggest_invoke_original_widget
+       1/1         0.03     0.03    0.00%      0.03     0.03             _zsh_autosuggest_orig_down-line-or-history [57]
+       2/2         0.05     0.02    0.01%      0.05     0.02             _zsh_autosuggest_orig_accept-line [48]
+       2/2         0.06     0.03    0.01%      0.06     0.03             _zsh_autosuggest_orig_up-line-or-history [47]
+       2/2         0.12     0.06    0.02%      0.12     0.06             zle-line-finish [42]
+      18/18        0.46     0.03    0.07%      0.46     0.03             _zsh_autosuggest_orig_self-insert [30]
+
+-----------------------------------------------------------------------------------
+
+      16/16        1.32     0.08    0.20%      0.87     0.05             _zsh_autosuggest_async_response [19]
+23)   16           1.32     0.08    0.20%      0.87     0.05    0.13%  _zsh_autosuggest_widget_suggest
+      16/41        0.13     0.01    0.02%      0.13     0.01             _zsh_autosuggest_highlight_reset [26]
+      16/41        0.15     0.01    0.02%      0.15     0.01             _zsh_autosuggest_highlight_apply [27]
+      16/16        0.17     0.01    0.03%      0.17     0.01             _zsh_autosuggest_suggest [39]
+
+-----------------------------------------------------------------------------------
+
+       2/5         0.51     0.26    0.08%      0.18     0.09             _zsh_autosuggest_bound_1_accept-line [45]
+       2/5         0.44     0.22    0.07%      0.16     0.08             _zsh_autosuggest_bound_1_up-line-or-history [46]
+       1/5         0.29     0.29    0.04%      0.11     0.11             _zsh_autosuggest_bound_1_down-line-or-history [55]
+31)    5           1.25     0.25    0.19%      0.46     0.09    0.07%  _zsh_autosuggest_widget_clear
+       5/41        0.07     0.01    0.01%      0.07     0.01             _zsh_autosuggest_highlight_apply [27]
+       5/41        0.12     0.02    0.02%      0.12     0.02             _zsh_autosuggest_highlight_reset [26]
+       5/5         0.59     0.12    0.09%      0.09     0.02             _zsh_autosuggest_clear [44]
+
+-----------------------------------------------------------------------------------
+
+      48/48        1.20     0.02    0.18%      1.20     0.02             _zsh_highlight_highlighter_main_paint [10]
+20)   48           1.20     0.02    0.18%      1.20     0.02    0.18%  _zsh_highlight_add_highlight
+
+-----------------------------------------------------------------------------------
+
+      37/49        0.65     0.02    0.10%      0.65     0.02             _zsh_highlight_main_highlighter_highlight_list [8]
+      12/49        0.24     0.02    0.04%      0.24     0.02             _zsh_highlight_main_add_many_region_highlights [33]
+21)   49           0.89     0.02    0.14%      0.89     0.02    0.14%  _zsh_highlight_main_add_region_highlight
+
+-----------------------------------------------------------------------------------
+
+      35/35        0.84     0.02    0.13%      0.84     0.02             _zsh_highlight_main_highlighter_highlight_list [8]
+24)   35           0.84     0.02    0.13%      0.84     0.02    0.13%  _zsh_highlight_main_highlighter__try_expand_parameter
+
+-----------------------------------------------------------------------------------
+
+      20/41        0.44     0.02    0.07%      0.44     0.02             _zsh_autosuggest_widget_modify [12]
+      16/41        0.13     0.01    0.02%      0.13     0.01             _zsh_autosuggest_widget_suggest [23]
+       5/41        0.12     0.02    0.02%      0.12     0.02             _zsh_autosuggest_widget_clear [31]
+26)   41           0.69     0.02    0.11%      0.69     0.02    0.11%  _zsh_autosuggest_highlight_reset
+
+-----------------------------------------------------------------------------------
+
+      25/25        0.66     0.03    0.10%      0.45     0.02             _zsh_highlight [7]
+32)   25           0.66     0.03    0.10%      0.45     0.02    0.07%  _zsh_highlight_highlighter_main_predicate
+      23/23        0.21     0.01    0.03%      0.21     0.01             _zsh_highlight_buffer_modified [38]
+
+-----------------------------------------------------------------------------------
+
+      20/41        0.40     0.02    0.06%      0.40     0.02             _zsh_autosuggest_widget_modify [12]
+      16/41        0.15     0.01    0.02%      0.15     0.01             _zsh_autosuggest_widget_suggest [23]
+       5/41        0.07     0.01    0.01%      0.07     0.01             _zsh_autosuggest_widget_clear [31]
+27)   41           0.63     0.02    0.10%      0.63     0.02    0.10%  _zsh_autosuggest_highlight_apply
+
+-----------------------------------------------------------------------------------
+
+       2/2         0.63     0.31    0.10%      0.04     0.02             azhw:zle-line-finish [35]
+50)    2           0.63     0.31    0.10%      0.04     0.02    0.01%  _zsh_autosuggest_bound_1_user:zle-line-finish
+       2/20        0.59     0.29    0.09%      0.19     0.09             _zsh_autosuggest_widget_modify [12]
+
+-----------------------------------------------------------------------------------
+
+45)    2           0.60     0.30    0.09%      0.09     0.05    0.01%  _zsh_autosuggest_bound_1_accept-line
+       2/5         0.51     0.26    0.08%      0.18     0.09             _zsh_autosuggest_widget_clear [31]
+
+-----------------------------------------------------------------------------------
+
+      23/38        0.38     0.02    0.06%      0.38     0.02             _zsh_highlight_main_highlighter_highlight_list [8]
+      15/38        0.22     0.01    0.03%      0.22     0.01             _zsh_highlight_main_highlighter_check_path [2]
+28)   38           0.60     0.02    0.09%      0.60     0.02    0.09%  _zsh_highlight_main_highlighter_expand_path
+
+-----------------------------------------------------------------------------------
+
+       5/5         0.59     0.12    0.09%      0.09     0.02             _zsh_autosuggest_widget_clear [31]
+44)    5           0.59     0.12    0.09%      0.09     0.02    0.01%  _zsh_autosuggest_clear
+       5/25        0.50     0.10    0.08%      0.37     0.07             _zsh_autosuggest_invoke_original_widget [17]
+
+-----------------------------------------------------------------------------------
+
+      12/12        0.53     0.04    0.08%      0.29     0.02             _zsh_highlight_main_highlighter_highlight_argument [18]
+33)   12           0.53     0.04    0.08%      0.29     0.02    0.04%  _zsh_highlight_main_add_many_region_highlights
+      12/49        0.24     0.02    0.04%      0.24     0.02             _zsh_highlight_main_add_region_highlight [21]
+
+-----------------------------------------------------------------------------------
+
+      48/48        0.51     0.01    0.08%      0.51     0.01             _zsh_highlight_main_highlighter_highlight_list [8]
+29)   48           0.51     0.01    0.08%      0.51     0.01    0.08%  _zsh_highlight_main__is_redirection
+
+-----------------------------------------------------------------------------------
+
+46)    2           0.51     0.25    0.08%      0.07     0.03    0.01%  _zsh_autosuggest_bound_1_up-line-or-history
+       2/5         0.44     0.22    0.07%      0.16     0.08             _zsh_autosuggest_widget_clear [31]
+
+-----------------------------------------------------------------------------------
+
+      18/18        0.46     0.03    0.07%      0.46     0.03             _zsh_autosuggest_invoke_original_widget [17]
+30)   18           0.46     0.03    0.07%      0.46     0.03    0.07%  _zsh_autosuggest_orig_self-insert
+
+-----------------------------------------------------------------------------------
+
+55)    1           0.33     0.33    0.05%      0.04     0.04    0.01%  _zsh_autosuggest_bound_1_down-line-or-history
+       1/5         0.29     0.29    0.04%      0.11     0.11             _zsh_autosuggest_widget_clear [31]
+
+-----------------------------------------------------------------------------------
+
+36)    3           0.21     0.07    0.03%      0.21     0.07    0.03%  _zsh_highlight_main__precmd_hook
+
+-----------------------------------------------------------------------------------
+
+37)    3           0.21     0.07    0.03%      0.21     0.07    0.03%  zle-line-init
+
+-----------------------------------------------------------------------------------
+
+      23/23        0.21     0.01    0.03%      0.21     0.01             _zsh_highlight_highlighter_main_predicate [32]
+38)   23           0.21     0.01    0.03%      0.21     0.01    0.03%  _zsh_highlight_buffer_modified
+
+-----------------------------------------------------------------------------------
+
+      16/16        0.17     0.01    0.03%      0.17     0.01             _zsh_autosuggest_widget_suggest [23]
+39)   16           0.17     0.01    0.03%      0.17     0.01    0.03%  _zsh_autosuggest_suggest
+
+-----------------------------------------------------------------------------------
+
+40)    3           0.14     0.05    0.02%      0.12     0.04    0.02%  prompt_starship_precmd
+       2/4         0.02     0.01    0.00%      0.02     0.01             __starship_get_time [54]
+
+-----------------------------------------------------------------------------------
+
+      25/25        0.12     0.00    0.02%      0.12     0.00             _zsh_highlight [7]
+41)   25           0.12     0.00    0.02%      0.12     0.00    0.02%  (anon) [:259]
+
+-----------------------------------------------------------------------------------
+
+       2/2         0.12     0.06    0.02%      0.12     0.06             _zsh_autosuggest_invoke_original_widget [17]
+42)    2           0.12     0.06    0.02%      0.12     0.06    0.02%  zle-line-finish
+
+-----------------------------------------------------------------------------------
+
+      12/12        0.11     0.01    0.02%      0.11     0.01             _zsh_highlight_main_highlighter_highlight_list [8]
+43)   12           0.11     0.01    0.02%      0.11     0.01    0.02%  _zsh_highlight_main__is_global_alias
+
+-----------------------------------------------------------------------------------
+
+       2/2         0.06     0.03    0.01%      0.06     0.03             _zsh_autosuggest_invoke_original_widget [17]
+47)    2           0.06     0.03    0.01%      0.06     0.03    0.01%  _zsh_autosuggest_orig_up-line-or-history
+
+-----------------------------------------------------------------------------------
+
+53)    2           0.06     0.03    0.01%      0.04     0.02    0.01%  prompt_starship_preexec
+       2/4         0.02     0.01    0.00%      0.02     0.01             __starship_get_time [54]
+
+-----------------------------------------------------------------------------------
+
+       2/2         0.05     0.02    0.01%      0.05     0.02             _zsh_autosuggest_invoke_original_widget [17]
+48)    2           0.05     0.02    0.01%      0.05     0.02    0.01%  _zsh_autosuggest_orig_accept-line
+
+-----------------------------------------------------------------------------------
+
+       2/2         0.04     0.02    0.01%      0.04     0.02             _zsh_highlight_main_highlighter_highlight_argument [18]
+51)    2           0.04     0.02    0.01%      0.04     0.02    0.01%  _zsh_highlight_main_highlighter_highlight_path_separators
+
+-----------------------------------------------------------------------------------
+
+       2/4         0.02     0.01    0.00%      0.02     0.01             prompt_starship_preexec [53]
+       2/4         0.02     0.01    0.00%      0.02     0.01             prompt_starship_precmd [40]
+54)    4           0.04     0.01    0.01%      0.04     0.01    0.01%  __starship_get_time
+
+-----------------------------------------------------------------------------------
+
+       3/3         0.03     0.01    0.01%      0.03     0.01             _zsh_highlight_main_highlighter_highlight_list [8]
+56)    3           0.03     0.01    0.01%      0.03     0.01    0.01%  _zsh_highlight_main_highlighter_check_assign
+
+-----------------------------------------------------------------------------------
+
+       1/1         0.03     0.03    0.00%      0.03     0.03             _zsh_autosuggest_invoke_original_widget [17]
+57)    1           0.03     0.03    0.00%      0.03     0.03    0.00%  _zsh_autosuggest_orig_down-line-or-history
+
+-----------------------------------------------------------------------------------
+
+58)    2           0.03     0.01    0.00%      0.03     0.01    0.00%  _zsh_highlight_preexec_hook
+
+-----------------------------------------------------------------------------------
+
+       1/1         0.01     0.01    0.00%      0.01     0.01             _zsh_highlight_main_highlighter_highlight_list [8]
+59)    1           0.01     0.01    0.00%      0.01     0.01    0.00%  (anon) [:616]
+
+-----------------------------------------------------------------------------------
+
+       1/1         0.01     0.01    0.00%      0.01     0.01             _zsh_highlight_main_highlighter_highlight_list [8]
+60)    1           0.01     0.01    0.00%      0.01     0.01    0.00%  _zsh_highlight_main__resolve_alias

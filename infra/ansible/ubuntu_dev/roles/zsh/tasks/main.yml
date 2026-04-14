@@ -1,0 +1,73 @@
+- name: Ensure zinit parent directory exists
+  ansible.builtin.file:
+    path: "{{ ubuntu_dev_zinit_dir | dirname }}"
+    state: directory
+    mode: "0755"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Clone zinit repository
+  ansible.builtin.git:
+    repo: "{{ ubuntu_dev_zinit_repo }}"
+    dest: "{{ ubuntu_dev_zinit_dir }}"
+    version: "{{ ubuntu_dev_zinit_version }}"
+    depth: 1
+    update: true
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Download starship archive
+  ansible.builtin.get_url:
+    url: "{{ ubuntu_dev_starship_url }}"
+    dest: "{{ ubuntu_dev_starship_archive }}"
+    mode: "0644"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Ensure starship extract directory exists
+  ansible.builtin.file:
+    path: "{{ ubuntu_dev_starship_extract_dir }}"
+    state: directory
+    mode: "0755"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Extract starship archive
+  ansible.builtin.unarchive:
+    src: "{{ ubuntu_dev_starship_archive }}"
+    dest: "{{ ubuntu_dev_starship_extract_dir }}"
+    remote_src: true
+    creates: "{{ ubuntu_dev_starship_extract_dir }}/starship"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Install starship binary
+  ansible.builtin.copy:
+    src: "{{ ubuntu_dev_starship_extract_dir }}/starship"
+    dest: "{{ ubuntu_dev_starship_binary_path }}"
+    remote_src: true
+    mode: "0755"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Deploy starship configuration
+  ansible.builtin.template:
+    src: starship.toml.j2
+    dest: "{{ ubuntu_dev_starship_config_path }}"
+    mode: "0644"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Deploy zsh configuration
+  ansible.builtin.template:
+    src: zshrc.j2
+    dest: "{{ ubuntu_dev_zshrc_path }}"
+    mode: "0644"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Set zsh as default shell
+  ansible.builtin.user:
+    name: "{{ ubuntu_dev_user }}"
+    shell: "{{ ubuntu_dev_zsh_shell_path }}"
+  when: ubuntu_dev_change_default_shell

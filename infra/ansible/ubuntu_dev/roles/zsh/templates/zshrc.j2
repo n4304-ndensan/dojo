@@ -1,0 +1,109 @@
+# ============================================================
+# PATH
+# ============================================================
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.dotnet/tools:$PATH"
+
+# ============================================================
+# zinit
+# ============================================================
+source "${HOME}/.local/share/zinit/zinit.git/zinit.zsh"
+
+# ============================================================
+# zsh-autosuggestions optimization
+# ============================================================
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
+# ============================================================
+# Plugins
+# ============================================================
+zinit ice wait lucid atload'_zsh_autosuggest_bind_widgets'
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait lucid
+zinit light zsh-users/zsh-completions
+
+zinit light zsh-users/zsh-history-substring-search
+
+# ============================================================
+# Completion system
+# ============================================================
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu select
+zstyle ':completion:*:descriptions' format '%F{green}-- %d --%f'
+
+# ============================================================
+# History
+# ============================================================
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+
+# ============================================================
+# Shell options
+# ============================================================
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt CORRECT
+
+# ============================================================
+# Key bindings
+# ============================================================
+bindkey -e
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
+
+# ============================================================
+# Aliases
+# ============================================================
+alias v="nvim"
+alias ll="eza -la --icons"
+alias ls="eza --icons"
+alias lt="eza -la --icons --tree --level=2"
+alias gs="git status"
+alias gc="git commit"
+alias gp="git push"
+alias gl="git log --oneline --graph -20"
+
+# ============================================================
+# fzf
+# ============================================================
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && \
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f /usr/share/doc/fzf/examples/completion.zsh ] && \
+  source /usr/share/doc/fzf/examples/completion.zsh
+
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+
+# ============================================================
+# zoxide
+# ============================================================
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+
+# ============================================================
+# zsh-syntax-highlighting
+# ============================================================
+ZSH_HIGHLIGHT_MAXLENGTH=200
+zinit light zsh-users/zsh-syntax-highlighting
+
+# ============================================================
+# starship
+# ============================================================
+eval "$(starship init zsh)"

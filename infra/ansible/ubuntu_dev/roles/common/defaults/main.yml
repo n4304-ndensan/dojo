@@ -1,0 +1,22 @@
+ubuntu_dev_home: "{{ '/root' if ubuntu_dev_user == 'root' else '/home/' ~ ubuntu_dev_user }}"
+ubuntu_dev_local_bin: "{{ ubuntu_dev_home }}/.local/bin"
+ubuntu_dev_config_home: "{{ ubuntu_dev_home }}/.config"
+ubuntu_dev_download_dir: "{{ ubuntu_dev_home }}/.cache/ubuntu-dev"
+
+ubuntu_dev_base_packages:
+  - curl
+  - git
+  - unzip
+  - build-essential
+  - luarocks
+  - nodejs
+  - npm
+
+ubuntu_dev_shell_packages:
+  - zsh
+  - fzf
+  - ripgrep
+  - fd-find
+  - eza
+  - zoxide
+  - tmux

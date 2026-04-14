@@ -1,0 +1,171 @@
+- name: Assert supported Neovim architecture
+  ansible.builtin.assert:
+    that:
+      - ansible_architecture in ubuntu_dev_neovim_supported_architectures
+    fail_msg: "This playbook currently supports amd64 only for Neovim .deb installation."
+
+- name: Install .NET SDK
+  ansible.builtin.apt:
+    name:
+      - dotnet-sdk-9.0
+    state: present
+    update_cache: true
+    cache_valid_time: 86400
+
+- name: Install uv
+  ansible.builtin.shell: |
+    set -euo pipefail
+    curl -LsSf {{ ubuntu_dev_uv_installer_url }} | sh
+  args:
+    executable: /bin/bash
+    creates: "{{ ubuntu_dev_local_bin }}/uv"
+  environment: "{{ ubuntu_dev_neovim_env }}"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Install Python development tools
+  ansible.builtin.command:
+    argv:
+      - "{{ ubuntu_dev_local_bin }}/uv"
+      - tool
+      - install
+      - "{{ item }}"
+  args:
+    creates: "{{ ubuntu_dev_local_bin }}/{{ item }}"
+  environment: "{{ ubuntu_dev_neovim_env }}"
+  loop:
+    - basedpyright
+    - ruff
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Install rustup
+  ansible.builtin.shell: |
+    set -euo pipefail
+    curl --proto '=https' --tlsv1.2 -sSf {{ ubuntu_dev_rustup_installer_url }} | sh -s -- -y
+  args:
+    executable: /bin/bash
+    creates: "{{ ubuntu_dev_home }}/.cargo/bin/rustup"
+  environment: "{{ ubuntu_dev_neovim_env }}"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Install Rust components
+  ansible.builtin.command:
+    argv:
+      - "{{ ubuntu_dev_home }}/.cargo/bin/rustup"
+      - component
+      - add
+      - rust-analyzer
+      - rustfmt
+  environment: "{{ ubuntu_dev_neovim_env }}"
+  changed_when: false
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Install csharpier
+  ansible.builtin.command:
+    argv:
+      - dotnet
+      - tool
+      - install
+      - -g
+      - csharpier
+  args:
+    creates: "{{ ubuntu_dev_home }}/.dotnet/tools/csharpier"
+  environment: "{{ ubuntu_dev_neovim_env }}"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Download Neovim package
+  ansible.builtin.get_url:
+    url: "{{ ubuntu_dev_neovim_deb_url }}"
+    dest: "{{ ubuntu_dev_neovim_deb_path }}"
+    mode: "0644"
+
+- name: Install Neovim package
+  ansible.builtin.apt:
+    deb: "{{ ubuntu_dev_neovim_deb_path }}"
+
+- name: Ensure Neovim directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ ubuntu_dev_neovim_config_dir }}"
+    - "{{ ubuntu_dev_neovim_config_dir }}/lua"
+    - "{{ ubuntu_dev_neovim_config_dir }}/lua/config"
+    - "{{ ubuntu_dev_neovim_config_dir }}/lua/plugins"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Deploy Neovim entrypoint
+  ansible.builtin.template:
+    src: init.lua.j2
+    dest: "{{ ubuntu_dev_neovim_config_dir }}/init.lua"
+    mode: "0644"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Deploy Neovim config files
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ ubuntu_dev_neovim_config_dir }}/{{ item.dest }}"
+    mode: "0644"
+  loop:
+    - src: lua/config/options.lua.j2
+      dest: lua/config/options.lua
+    - src: lua/config/keymaps.lua.j2
+      dest: lua/config/keymaps.lua
+    - src: lua/config/lazy.lua.j2
+      dest: lua/config/lazy.lua
+    - src: lua/plugins/core.lua.j2
+      dest: lua/plugins/core.lua
+    - src: lua/plugins/lsp.lua.j2
+      dest: lua/plugins/lsp.lua
+    - src: lua/plugins/csharp.lua.j2
+      dest: lua/plugins/csharp.lua
+    - src: lua/plugins/lang-extra.lua.j2
+      dest: lua/plugins/lang-extra.lua
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Sync Lazy plugins
+  ansible.builtin.command:
+    argv:
+      - nvim
+      - --headless
+      - "+Lazy! sync"
+      - +qa
+  environment: "{{ ubuntu_dev_neovim_env }}"
+  changed_when: false
+  when: ubuntu_dev_neovim_bootstrap_plugins
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Install Mason packages
+  ansible.builtin.command:
+    argv:
+      - nvim
+      - --headless
+      - "+MasonInstall {{ ubuntu_dev_neovim_mason_packages | join(' ') }}"
+      - +qa
+  environment: "{{ ubuntu_dev_neovim_env }}"
+  changed_when: false
+  when: ubuntu_dev_neovim_bootstrap_plugins
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Update treesitter parsers
+  ansible.builtin.command:
+    argv:
+      - nvim
+      - --headless
+      - +TSUpdateSync
+      - +qa
+  environment: "{{ ubuntu_dev_neovim_env }}"
+  changed_when: false
+  when: ubuntu_dev_neovim_bootstrap_plugins
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"

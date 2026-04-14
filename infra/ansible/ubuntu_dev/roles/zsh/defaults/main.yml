@@ -1,0 +1,17 @@
+ubuntu_dev_zsh_shell_path: /usr/bin/zsh
+ubuntu_dev_zshrc_path: "{{ ubuntu_dev_home }}/.zshrc"
+ubuntu_dev_starship_config_path: "{{ ubuntu_dev_config_home }}/starship.toml"
+
+ubuntu_dev_zinit_repo: https://github.com/zdharma-continuum/zinit.git
+ubuntu_dev_zinit_version: main
+ubuntu_dev_zinit_dir: "{{ ubuntu_dev_home }}/.local/share/zinit/zinit.git"
+
+ubuntu_dev_starship_target_map:
+  x86_64: x86_64-unknown-linux-gnu
+  aarch64: aarch64-unknown-linux-gnu
+
+ubuntu_dev_starship_target: "{{ ubuntu_dev_starship_target_map[ansible_architecture] | default('x86_64-unknown-linux-gnu') }}"
+ubuntu_dev_starship_archive: "{{ ubuntu_dev_download_dir }}/starship-{{ ubuntu_dev_starship_version }}.tar.gz"
+ubuntu_dev_starship_extract_dir: "{{ ubuntu_dev_download_dir }}/starship-{{ ubuntu_dev_starship_version }}"
+ubuntu_dev_starship_url: "https://github.com/starship/starship/releases/download/v{{ ubuntu_dev_starship_version }}/starship-{{ ubuntu_dev_starship_target }}.tar.gz"
+ubuntu_dev_starship_binary_path: "{{ ubuntu_dev_local_bin }}/starship"

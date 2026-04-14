@@ -1,0 +1,81 @@
+return {
+  {
+    "mason-org/mason.nvim",
+    opts = {
+      registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+      },
+    },
+  },
+
+  {
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = { "mason-org/mason.nvim" },
+    opts = {},
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("rust_analyzer")
+      vim.lsp.enable("basedpyright")
+    end,
+  },
+
+  {
+    "saghen/blink.cmp",
+    version = "*",
+    opts = {
+      keymap = { preset = "default" },
+      appearance = { nerd_font_variant = "mono" },
+      completion = {
+        documentation = { auto_show = true },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+    },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    opts = {
+      ensure_installed = {
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "markdown",
+        "markdown_inline",
+        "c_sharp",
+        "rust",
+        "python",
+        "toml",
+        "json",
+        "yaml",
+      },
+      highlight = { enable = true },
+      indent = { enable = true },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
+      formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "ruff_format" },
+        rust = { "rustfmt" },
+        cs = { "csharpier" },
+        markdown = { "prettier" },
+      },
+    },
+  },
+}
