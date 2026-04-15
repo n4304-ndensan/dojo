@@ -1,8 +1,8 @@
 ubuntu_dev_user: "{{ ansible_env.SUDO_USER | default(ansible_user) | default(ansible_user_id) }}"
 ubuntu_dev_change_default_shell: true
 
-ubuntu_dev_starship_version: "1.24.0"
-ubuntu_dev_neovim_version: "0.11.5"
+ubuntu_dev_starship_version: "1.24.2"
+ubuntu_dev_neovim_version: "0.12.1"
 
 ubuntu_dev_neovim_bootstrap_plugins: true
 ubuntu_dev_neovim_mason_packages:

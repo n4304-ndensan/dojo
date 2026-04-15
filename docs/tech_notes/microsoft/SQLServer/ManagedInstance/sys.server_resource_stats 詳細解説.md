@@ -156,4 +156,4 @@ ORDER BY end_time DESC;
 [mi-monitoring]: https://learn.microsoft.com/azure/azure-sql/managed-instance/monitoring-with-dmvs?view=azuresql
 [mi-performance-guidance]: https://learn.microsoft.com/azure/azure-sql/managed-instance/performance-guidance?view=azuresql#tune-your-database
 [mi-resource-limits]: https://learn.microsoft.com/azure/azure-sql/managed-instance/resource-limits?view=azuresql
-[dmv-list]: ../SQL%20Server%20DMV一覧.md
+[dmv-list]: ../Diagnostics/SQL%20Server%20DMV一覧.md

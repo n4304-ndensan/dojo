@@ -2,7 +2,7 @@
 
 > 位置づけ: この文書は、`master.sys.server_resource_stats` や `tempdb.sys.dm_db_file_space_usage` のような名前を読むための概念整理です。SQL Server の名前空間、スキーマ、データベースユーザーの関係を一度分解して説明します。
 >
-> 読み分け: `sys.server_resource_stats` 自体の解説は [[ManagedInstance/sys.server_resource_stats 詳細解説]]、Isolation Level の全体像は [[SQL Server の Isolation Level（分離レベル）詳細解説]]、フォルダ全体の案内は [[SQL Server ドキュメントガイド]] を参照してください。
+> 読み分け: `sys.server_resource_stats` 自体の解説は [[../ManagedInstance/sys.server_resource_stats 詳細解説]]、Isolation Level の全体像は [[SQL Server の Isolation Level（分離レベル）詳細解説]]、フォルダ全体の案内は [[SQL Server ドキュメントガイド]] を参照してください。
 
 ## 1. 文脈と目的
 

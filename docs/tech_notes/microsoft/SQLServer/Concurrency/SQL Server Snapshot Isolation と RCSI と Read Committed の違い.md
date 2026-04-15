@@ -2,7 +2,7 @@
 
 > 位置づけ: この文書は、RCSI と SNAPSHOT と従来の READ COMMITTED を選び分けるための比較ノートです。設計判断や既存システムへの影響範囲を整理したいときに使います。
 >
-> 読み分け: 基礎理解と評価指標の全体像は [[SQL Server 入門から始める RCSI 性能評価研修]]、Azure SQL Managed Instance 固有の前提整理は [[ManagedInstance/Azure SQL Managed Instance における RCSI 評価の前提整理]]、フォルダ全体の案内は [[SQL Server ドキュメントガイド]] を参照してください。
+> 読み分け: 基礎理解と評価指標の全体像は [[SQL Server 入門から始める RCSI 性能評価研修]]、Azure SQL Managed Instance 固有の前提整理は [[../ManagedInstance/Azure SQL Managed Instance における RCSI 評価の前提整理]]、フォルダ全体の案内は [[SQL Server ドキュメントガイド]] を参照してください。
 
 ## 1. 文脈と目的
 

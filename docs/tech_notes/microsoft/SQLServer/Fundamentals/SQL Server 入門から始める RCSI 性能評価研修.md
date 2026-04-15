@@ -2,7 +2,7 @@
 
 > 位置づけ: この文書は SQLServer フォルダの主教材です。SQL Server の基礎、RCSI の考え方、評価指標の読み方を一冊でつかむときの起点として使います。
 >
-> 読み分け: 全体像の深掘りは [[SQL Server の全体像 詳細解説]]、分離レベルの比較は [[SQL Server Snapshot Isolation と RCSI と Read Committed の違い]]、監視オブジェクトの索引は [[SQL Server DMV一覧]]、フォルダ全体の案内は [[SQL Server ドキュメントガイド]] を参照してください。
+> 読み分け: lock / blocking / version store の差分整理は [[SQL Server の Lock と Blocking と Version Store の整理]]、全体像の深掘りは [[SQL Server の全体像 詳細解説]]、分離レベルの比較は [[SQL Server Snapshot Isolation と RCSI と Read Committed の違い]]、監視オブジェクトの索引は [[SQL Server DMV一覧]]、フォルダ全体の案内は [[SQL Server ドキュメントガイド]] を参照してください。
 
 ## 1. 文脈と目的
 
