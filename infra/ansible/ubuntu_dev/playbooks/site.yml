@@ -1,7 +1,30 @@
 - name: Provision Ubuntu development environment
   hosts: ubuntu_dev
-  gather_facts: true
+  gather_facts: false
   become: true
+  vars_files:
+    - ../group_vars/all.yml
+
+  pre_tasks:
+    - name: Gather facts without privilege escalation
+      ansible.builtin.setup:
+      become: false
+
+    - name: Resolve target user
+      ansible.builtin.set_fact:
+        ubuntu_dev_user: >-
+          {{
+            lookup('ansible.builtin.env', 'SUDO_USER') | default('', true)
+            or lookup('ansible.builtin.env', 'USER') | default('', true)
+            or ansible_user_id
+          }}
+
+    - name: Show playbook execution summary
+      ansible.builtin.debug:
+        msg:
+          - "host={{ inventory_hostname }} user={{ ubuntu_dev_user }} distro={{ ansible_distribution }} {{ ansible_distribution_version }} arch={{ ansible_architecture }}"
+          - "starship={{ ubuntu_dev_starship_version }} neovim={{ ubuntu_dev_neovim_version }} bootstrap_plugins={{ ubuntu_dev_neovim_bootstrap_plugins }}"
+          - "apt_lock_timeout={{ ubuntu_dev_apt_lock_timeout }}s apt_wait_poll_interval={{ ubuntu_dev_apt_wait_poll_interval }}s cache_retries={{ ubuntu_dev_apt_update_cache_retries }}"
 
   roles:
     - role: common

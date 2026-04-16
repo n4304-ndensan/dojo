@@ -6,6 +6,7 @@ ubuntu_dev_download_dir: "{{ ubuntu_dev_home }}/.cache/ubuntu-dev"
 ubuntu_dev_base_packages:
   - curl
   - git
+  - software-properties-common
   - unzip
   - build-essential
   - luarocks

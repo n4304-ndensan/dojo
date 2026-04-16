@@ -1,9 +1,76 @@
+- name: Show common role summary
+  ansible.builtin.debug:
+    msg:
+      - "ubuntu_dev_user={{ ubuntu_dev_user }} home={{ ubuntu_dev_home }}"
+      - "common_packages={{ (ubuntu_dev_base_packages + ubuntu_dev_shell_packages) | join(', ') }}"
+      - "apt_lock_timeout={{ ubuntu_dev_apt_lock_timeout }}s apt_wait_poll_interval={{ ubuntu_dev_apt_wait_poll_interval }}s"
+
+- name: Wait for package manager to become idle
+  ansible.builtin.shell: |
+    set -euo pipefail
+    timeout={{ ubuntu_dev_apt_lock_timeout | int }}
+    interval={{ ubuntu_dev_apt_wait_poll_interval | int }}
+    deadline=$(( $(date +%s) + timeout ))
+    seen_busy=0
+
+    print_processes() {
+      ps -eo pid=,comm=,args= --sort=pid | awk '
+        $2 !~ /^(apt|apt-get|dpkg|unattended-upgr|packagekitd)$/ { next }
+        $0 ~ /unattended-upgrade-shutdown --wait-for-signal/ { next }
+        { print "pid=" $1 " comm=" $2 " args=" substr($0, index($0, $3)) }
+      '
+    }
+
+    while true; do
+      processes="$(print_processes)"
+      if [ -z "$processes" ]; then
+        if [ "$seen_busy" -eq 0 ]; then
+          echo "Package manager is already idle."
+        else
+          echo "Package manager is now idle."
+        fi
+        break
+      fi
+
+      seen_busy=1
+      echo "Package manager is busy; waiting..."
+      printf '%s\n' "$processes"
+
+      if [ "$(date +%s)" -ge "$deadline" ]; then
+        echo "Timed out after ${timeout}s while waiting for package manager to become idle."
+        exit 1
+      fi
+
+      sleep "$interval"
+    done
+  args:
+    executable: /bin/bash
+  register: ubuntu_dev_apt_wait
+  changed_when: false
+  when: ubuntu_dev_wait_for_package_manager
+
+- name: Show package manager wait result
+  ansible.builtin.debug:
+    msg: "{{ ubuntu_dev_apt_wait.stdout_lines }}"
+  when: ubuntu_dev_wait_for_package_manager
+
 - name: Install common Ubuntu packages
   ansible.builtin.apt:
+    lock_timeout: "{{ ubuntu_dev_apt_lock_timeout }}"
+    update_cache_retries: "{{ ubuntu_dev_apt_update_cache_retries }}"
+    update_cache_retry_max_delay: "{{ ubuntu_dev_apt_update_cache_retry_max_delay }}"
     update_cache: true
     cache_valid_time: 86400
     name: "{{ ubuntu_dev_base_packages + ubuntu_dev_shell_packages }}"
     state: present
+  register: ubuntu_dev_common_packages
+
+- name: Show common package installation result
+  ansible.builtin.debug:
+    msg:
+      - "changed={{ ubuntu_dev_common_packages.changed }}"
+      - "cache_updated={{ ubuntu_dev_common_packages.cache_updated | default('n/a') }}"
+      - "packages={{ (ubuntu_dev_base_packages + ubuntu_dev_shell_packages) | join(', ') }}"
 
 - name: Ensure user workspace directories exist
   ansible.builtin.file:

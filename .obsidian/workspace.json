@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/tech_notes/microsoft/SQLServer/Fundamentals/SQL Server の全体像 詳細解説.md",
+                "file": "docs/tech_notes/linux/ansible/01 Ansible ファイル構成と読み方.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SQL Server の全体像 詳細解説"
+              "title": "01 Ansible ファイル構成と読み方"
             }
           }
         ]
@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 474.5
+    "width": 474.5,
+    "collapsed": true
   },
   "right": {
     "id": "e1f2f631dfb9fd48",
@@ -171,6 +172,10 @@
   },
   "active": "757f9cb82433ac2f",
   "lastOpenFiles": [
+    "docs/tech_notes/linux/ansible/00 Ansible 基礎ガイド.md",
+    "docs/tech_notes/linux/ansible/01 Ansible ファイル構成と読み方.md",
+    "docs/tech_notes/microsoft/SQLServer/Fundamentals/SQL Server の全体像 詳細解説.md",
+    "docs/tech_notes/linux/ansible",
     "docs/tech_notes/microsoft/SQLServer/Fundamentals/index.md",
     "docs/tech_notes/microsoft/SQLServer/Fundamentals/SQL Server の User、Schema、tempdb.sys の名前解決.md",
     "docs/tech_notes/microsoft/SQLServer/Diagnostics/DMV/sys.dm_db_log_space_usage.md",
@@ -194,9 +199,6 @@
     "docs/tech_notes/microsoft/SQLServer/Diagnostics/DMV/sys.dm_os_wait_stats.md",
     "docs/tech_notes/microsoft/SQLServer/Diagnostics/DMV/sys.dm_os_waiting_tasks.md",
     "docs/tech_notes/microsoft/SQLServer/Diagnostics/DMV/sys.dm_os_tasks.md",
-    "docs/tech_notes/microsoft/SQLServer/Diagnostics/DMV/sys.dm_os_sys_memory.md",
-    "docs/tech_notes/microsoft/SQLServer/Diagnostics/DMV/sys.dm_exec_requests.md",
-    "docs/tech_notes/microsoft/SQLServer/Diagnostics/DMV/sys.dm_db_task_space_usage.md",
     "docs/tech_notes/microsoft/SQLServer/Diagnostics/DMV",
     "docs/tech_notes/microsoft/SQLServer/Diagnostics",
     "docs/tech_notes/microsoft/SQLServer/Concurrency",
@@ -206,7 +208,6 @@
     "docs/tech_notes/microsoft/SQLServer/ManagedInstance",
     "docs/tech_notes/microsoft/SQLServer/DMV",
     "docs/tech_notes/microsoft/azure/Azure_solutions_Architect_Expert_AZ-305-Practice_Test_6.csv",
-    "docs/tech_notes/microsoft/azure/(.csv",
     "playground/dotnet/Architecture/LayeredArchitecture/LayeredArchitecture.Web/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
     "playground/dotnet/Architecture/LayeredArchitecture/LayeredArchitecture.Web/wwwroot/favicon.png",
     "playground/dotnet/Architecture/LayeredArchitecture/LayeredArchitecture.View/wwwroot/background.png",

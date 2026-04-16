@@ -1,3 +1,16 @@
+- name: Ensure zsh role directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ ubuntu_dev_download_dir }}"
+    - "{{ ubuntu_dev_local_bin }}"
+    - "{{ ubuntu_dev_config_home }}"
+    - "{{ ubuntu_dev_zinit_dir | dirname }}"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
 - name: Ensure zinit parent directory exists
   ansible.builtin.file:
     path: "{{ ubuntu_dev_zinit_dir | dirname }}"
@@ -66,8 +79,15 @@
   become: true
   become_user: "{{ ubuntu_dev_user }}"
 
+- name: Check whether zsh is installed
+  ansible.builtin.stat:
+    path: "{{ ubuntu_dev_zsh_shell_path }}"
+  register: ubuntu_dev_zsh_shell
+
 - name: Set zsh as default shell
   ansible.builtin.user:
     name: "{{ ubuntu_dev_user }}"
     shell: "{{ ubuntu_dev_zsh_shell_path }}"
-  when: ubuntu_dev_change_default_shell
+  when:
+    - ubuntu_dev_change_default_shell
+    - ubuntu_dev_zsh_shell.stat.exists

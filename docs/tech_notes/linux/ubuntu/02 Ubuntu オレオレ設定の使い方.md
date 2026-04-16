@@ -38,12 +38,18 @@ infra/ansible/ubuntu_dev/
 infra/ansible/ubuntu_dev/README.md
 ```
 
+Ansible 自体の基本概念から学びたい場合は、先に [[../ansible/00 Ansible 基礎ガイド]] を読むと理解しやすくなります。
+
 最短手順は以下です。
 
 1. `infra/ansible/ubuntu_dev/group_vars/all.yml` を必要に応じて調整する
 2. `infra/ansible/ubuntu_dev/inventories/localhost.ini` を確認する
 3. `infra/ansible/ubuntu_dev/` に移動する
 4. `ansible-playbook playbooks/site.yml -K` を実行する
+
+実行時は標準出力に、対象ホスト、導入バージョン、apt ロック待機設定、現在のパッケージマネージャー状態が表示されます。
+
+Ubuntu 初期セットアップ直後に `unattended-upgrades` が `dpkg` ロックを掴んでいる場合でも、playbook は一定時間待機してから続行します。待機上限は `group_vars/all.yml` の `ubuntu_dev_apt_lock_timeout` で調整します。
 
 ## 3. どちらを選ぶべきか
 

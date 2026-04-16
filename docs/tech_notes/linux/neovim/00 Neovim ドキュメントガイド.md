@@ -2,15 +2,15 @@
 
 ## この文書の責務
 
-Ubuntu 24.04 上に Neovim 0.11 系の開発環境を構築する一連の手順書群への入口です。各文書の責務と読む順序を示します。
+Ubuntu 24.04 上に Neovim 0.12 系の開発環境を構築する一連の手順書群への入口です。各文書の責務と読む順序を示します。
 
 ## 前提
 
 - OS: Ubuntu 24.04 LTS
 - シェル: **zsh**（[[00 zsh ドキュメントガイド]] を先に完了しておくこと）
-- Neovim: 0.11.5（公式 `.deb`）
+- Neovim: 0.12.1（公式 `.deb`）
 - ツールチェーン: Python は **uv**、Rust は **cargo**（rustup 経由）、C# は **dotnet**
-- 設計方針: Neovim 0.11 のネイティブ機能を優先し、プラグインの部品点数を最小化する
+- 設計方針: Neovim 0.12 系のネイティブ機能を優先し、プラグインの部品点数を最小化する
 
 ## 文書一覧と読む順序
 
@@ -33,7 +33,7 @@ snacks.nvim ─ UX 統合（terminal / bigfile / notifier / quickfile）
 blink.cmp ── 補完（高速）
 conform.nvim  整形（保存時自動）
 mason.nvim ── 外部ツール管理（LSP サーバー・フォーマッター）
-nvim-lspconfig + vim.lsp.enable() ── LSP 設定（0.11 ネイティブ方式）
+nvim-lspconfig + vim.lsp.enable() ── LSP 設定（0.12 系ネイティブ方式）
 ```
 
 言語別:

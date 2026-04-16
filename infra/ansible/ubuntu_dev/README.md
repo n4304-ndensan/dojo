@@ -4,7 +4,7 @@ Ubuntu 24.04 向けの個人開発環境を、`zsh` と `Neovim` を中心に再
 
 この構成は次をまとめて扱います。
 
-- 共通パッケージ: `curl`, `git`, `ripgrep`, `fd-find`, `fzf`, `tmux`, `eza`, `zoxide`, `nodejs`, `npm`
+- 共通パッケージ: `curl`, `git`, `software-properties-common`, `ripgrep`, `fd-find`, `fzf`, `tmux`, `eza`, `zoxide`, `nodejs`, `npm`
 - zsh: `zinit`, `starship`, `.zshrc`, `starship.toml`
 - Neovim: `nvim` 本体、`uv`, `rustup`, `.NET SDK`, `csharpier`
 - Neovim 設定: `init.lua`, `lua/config/*`, `lua/plugins/*`
@@ -72,8 +72,10 @@ sudo apt install -y ansible
 | --- | --- | --- |
 | `ubuntu_dev_user` | 設定を適用するユーザー | 実行ユーザー |
 | `ubuntu_dev_change_default_shell` | zsh をデフォルトシェルにするか | `true` |
-| `ubuntu_dev_starship_version` | starship の導入バージョン | `1.24.0` |
-| `ubuntu_dev_neovim_version` | Neovim の導入バージョン | `0.11.5` |
+| `ubuntu_dev_starship_version` | starship の導入バージョン | `1.24.2` |
+| `ubuntu_dev_neovim_version` | Neovim の導入バージョン | `0.12.1` |
+| `ubuntu_dev_apt_lock_timeout` | apt / dpkg ロック待機の上限秒数 | `600` |
+| `ubuntu_dev_apt_wait_poll_interval` | apt 待機中の状態確認間隔 | `5` |
 | `ubuntu_dev_neovim_bootstrap_plugins` | `Lazy` / `Mason` / `TSUpdate` を走らせるか | `true` |
 
 ### 2. inventory を確認する
@@ -95,6 +97,15 @@ ansible-playbook playbooks/site.yml -K
 ```
 
 `-K` は `become` 用の sudo パスワード入力です。
+
+実行時は標準出力に次を表示します。
+
+- 対象ホスト、ユーザー、Ubuntu バージョン、アーキテクチャ
+- 導入予定の主要バージョン
+- apt / dpkg ロック待機設定
+- パッケージマネージャーが busy な場合の待機状況
+
+`unattended-upgrades` などが apt ロックを掴んでいる場合は、`ubuntu_dev_apt_lock_timeout` の範囲で待機してから続行します。
 
 ### 4. 役割ごとに実行する
 
@@ -137,6 +148,7 @@ ansible-playbook playbooks/site.yml -K --check --diff
 - `~/.config/nvim/init.lua`
 - `~/.config/nvim/lua/config/*.lua`
 - `~/.config/nvim/lua/plugins/*.lua`
+- `.NET SDK 10.0`
 - `lazy.nvim` によるプラグイン同期
 - `mason.nvim` による `lua-language-server`, `stylua`, `prettier`, `roslyn` 導入
 - `treesitter` の初期更新

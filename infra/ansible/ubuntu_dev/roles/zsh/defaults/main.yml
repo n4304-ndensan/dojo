@@ -10,7 +10,8 @@ ubuntu_dev_starship_target_map:
   x86_64: x86_64-unknown-linux-gnu
   aarch64: aarch64-unknown-linux-gnu
 
-ubuntu_dev_starship_target: "{{ ubuntu_dev_starship_target_map[ansible_architecture] | default('x86_64-unknown-linux-gnu') }}"
+ubuntu_dev_architecture: "{{ ansible_facts.architecture | default(ansible_architecture | default('x86_64')) }}"
+ubuntu_dev_starship_target: "{{ ubuntu_dev_starship_target_map[ubuntu_dev_architecture] | default('x86_64-unknown-linux-gnu') }}"
 ubuntu_dev_starship_archive: "{{ ubuntu_dev_download_dir }}/starship-{{ ubuntu_dev_starship_version }}.tar.gz"
 ubuntu_dev_starship_extract_dir: "{{ ubuntu_dev_download_dir }}/starship-{{ ubuntu_dev_starship_version }}"
 ubuntu_dev_starship_url: "https://github.com/starship/starship/releases/download/v{{ ubuntu_dev_starship_version }}/starship-{{ ubuntu_dev_starship_target }}.tar.gz"

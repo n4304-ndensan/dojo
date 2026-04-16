@@ -1,16 +1,89 @@
 - name: Assert supported Neovim architecture
   ansible.builtin.assert:
     that:
-      - ansible_architecture in ubuntu_dev_neovim_supported_architectures
+      - ubuntu_dev_architecture in ubuntu_dev_neovim_supported_architectures
     fail_msg: "This playbook currently supports amd64 only for Neovim .deb installation."
+
+- name: Show Neovim role summary
+  ansible.builtin.debug:
+    msg:
+      - "neovim_version={{ ubuntu_dev_neovim_version }} neovim_deb_url={{ ubuntu_dev_neovim_deb_url }}"
+      - "dotnet_sdk_package={{ ubuntu_dev_dotnet_sdk_package }} dotnet_backports_enabled={{ ubuntu_dev_dotnet_enable_backports_repository }}"
+
+- name: Ensure Neovim role directories exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ ubuntu_dev_download_dir }}"
+    - "{{ ubuntu_dev_local_bin }}"
+    - "{{ ubuntu_dev_config_home }}"
+    - "{{ ubuntu_dev_neovim_config_dir }}"
+    - "{{ ubuntu_dev_neovim_config_dir }}/lua"
+    - "{{ ubuntu_dev_neovim_config_dir }}/lua/config"
+    - "{{ ubuntu_dev_neovim_config_dir }}/lua/plugins"
+  become: true
+  become_user: "{{ ubuntu_dev_user }}"
+
+- name: Check whether Ubuntu .NET backports repository is configured
+  ansible.builtin.shell: |
+    set -euo pipefail
+    grep -Rqs "^deb .*ppa\.launchpadcontent\.net/dotnet/backports/ubuntu" /etc/apt/sources.list /etc/apt/sources.list.d
+  args:
+    executable: /bin/bash
+  when: ubuntu_dev_dotnet_enable_backports_repository
+  register: ubuntu_dev_dotnet_backports_present
+  changed_when: false
+  failed_when: false
+
+- name: Enable Ubuntu .NET backports repository
+  ansible.builtin.command:
+    argv:
+      - add-apt-repository
+      - --yes
+      - "{{ ubuntu_dev_dotnet_backports_repository }}"
+  when:
+    - ubuntu_dev_dotnet_enable_backports_repository
+    - ubuntu_dev_dotnet_backports_present.rc != 0
+  register: ubuntu_dev_dotnet_backports
+
+- name: Refresh apt cache after enabling .NET backports repository
+  ansible.builtin.apt:
+    lock_timeout: "{{ ubuntu_dev_apt_lock_timeout }}"
+    update_cache_retries: "{{ ubuntu_dev_apt_update_cache_retries }}"
+    update_cache_retry_max_delay: "{{ ubuntu_dev_apt_update_cache_retry_max_delay }}"
+    update_cache: true
+  when:
+    - ubuntu_dev_dotnet_enable_backports_repository
+    - ubuntu_dev_dotnet_backports_present.rc != 0
+
+- name: Show .NET repository setup result
+  ansible.builtin.debug:
+    msg:
+      - "repository={{ ubuntu_dev_dotnet_backports_repository }}"
+      - "already_present={{ ubuntu_dev_dotnet_backports_present.rc == 0 }}"
+      - "changed={{ ubuntu_dev_dotnet_backports.changed | default(false) }}"
+  when: ubuntu_dev_dotnet_enable_backports_repository
 
 - name: Install .NET SDK
   ansible.builtin.apt:
+    lock_timeout: "{{ ubuntu_dev_apt_lock_timeout }}"
+    update_cache_retries: "{{ ubuntu_dev_apt_update_cache_retries }}"
+    update_cache_retry_max_delay: "{{ ubuntu_dev_apt_update_cache_retry_max_delay }}"
     name:
-      - dotnet-sdk-9.0
+      - "{{ ubuntu_dev_dotnet_sdk_package }}"
     state: present
     update_cache: true
     cache_valid_time: 86400
+  register: ubuntu_dev_dotnet_install
+
+- name: Show .NET SDK installation result
+  ansible.builtin.debug:
+    msg:
+      - "changed={{ ubuntu_dev_dotnet_install.changed }}"
+      - "cache_updated={{ ubuntu_dev_dotnet_install.cache_updated | default('n/a') }}"
+      - "package={{ ubuntu_dev_dotnet_sdk_package }}"
 
 - name: Install uv
   ansible.builtin.shell: |
@@ -77,6 +150,43 @@
   become: true
   become_user: "{{ ubuntu_dev_user }}"
 
+- name: Check installed Neovim package version
+  ansible.builtin.shell: |
+    set -euo pipefail
+    dpkg-query -W -f='${Version}\n' neovim 2>/dev/null || true
+  args:
+    executable: /bin/bash
+  register: ubuntu_dev_installed_neovim_version
+  changed_when: false
+
+- name: Define conflicting Ubuntu Neovim packages
+  ansible.builtin.set_fact:
+    ubuntu_dev_neovim_conflicting_packages: >-
+      {{
+        ['neovim-runtime']
+        + (
+          ['neovim']
+          if (ubuntu_dev_installed_neovim_version.stdout | trim) not in ['', ubuntu_dev_neovim_version]
+          else []
+        )
+      }}
+
+- name: Remove Ubuntu Neovim packages that conflict with upstream .deb
+  ansible.builtin.apt:
+    lock_timeout: "{{ ubuntu_dev_apt_lock_timeout }}"
+    name: "{{ ubuntu_dev_neovim_conflicting_packages }}"
+    state: absent
+    purge: true
+    autoremove: true
+  register: ubuntu_dev_remove_distribution_neovim
+
+- name: Show conflicting Neovim package removal result
+  ansible.builtin.debug:
+    msg:
+      - "changed={{ ubuntu_dev_remove_distribution_neovim.changed }}"
+      - "installed_neovim_version={{ ubuntu_dev_installed_neovim_version.stdout | trim | default('absent', true) }}"
+      - "requested_package_cleanup={{ ubuntu_dev_neovim_conflicting_packages | join(', ') }}"
+
 - name: Download Neovim package
   ansible.builtin.get_url:
     url: "{{ ubuntu_dev_neovim_deb_url }}"
@@ -85,20 +195,15 @@
 
 - name: Install Neovim package
   ansible.builtin.apt:
+    lock_timeout: "{{ ubuntu_dev_apt_lock_timeout }}"
     deb: "{{ ubuntu_dev_neovim_deb_path }}"
+  register: ubuntu_dev_neovim_package
 
-- name: Ensure Neovim directories exist
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: "0755"
-  loop:
-    - "{{ ubuntu_dev_neovim_config_dir }}"
-    - "{{ ubuntu_dev_neovim_config_dir }}/lua"
-    - "{{ ubuntu_dev_neovim_config_dir }}/lua/config"
-    - "{{ ubuntu_dev_neovim_config_dir }}/lua/plugins"
-  become: true
-  become_user: "{{ ubuntu_dev_user }}"
+- name: Show Neovim package installation result
+  ansible.builtin.debug:
+    msg:
+      - "changed={{ ubuntu_dev_neovim_package.changed }}"
+      - "deb={{ ubuntu_dev_neovim_deb_path }}"
 
 - name: Deploy Neovim entrypoint
   ansible.builtin.template:
@@ -162,7 +267,8 @@
     argv:
       - nvim
       - --headless
-      - +TSUpdateSync
+      - "+Lazy! load nvim-treesitter"
+      - +TSUpdate
       - +qa
   environment: "{{ ubuntu_dev_neovim_env }}"
   changed_when: false
